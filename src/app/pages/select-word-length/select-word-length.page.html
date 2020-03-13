@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <div id="title">
+      <strong>Wortlänge</strong>
+      <p>Wie viele Wörter hat dein BIP39 Passwort?</p>
+    </div>
+    <ion-item>
+      <ion-label>Wörter</ion-label>
+      <ion-select placeholder="Auswahl" value="24" cancelText="Schließen" okText="Auswählen">
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="12">12</ion-select-option>
+        <ion-select-option value="15">15</ion-select-option>
+        <ion-select-option value="18">18</ion-select-option>
+        <ion-select-option value="21">21</ion-select-option>
+        <ion-select-option value="24">24</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="full" color="secondary" [routerLink]="getSelectSecurityRouterLink()">Weiter
+    </ion-button>
+  </div>
+</ion-content>
