@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <div id="title">
+      <strong>PIN Sicherung</strong>
+      <p>Sicher deine Karten mit einem PIN</p>
+    </div>
+
+    <form onsubmit="processForm(event)">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-label position="floating">PIN</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+
+    <ion-item>
+      <ion-label>Sicherheit</ion-label>
+      <ion-select placeholder="Auswahl" value="3/5" cancelText="Schließen" okText="Auswählen">
+        <ion-select-option value="35">3/5</ion-select-option>
+        <ion-select-option value="510">5/10</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="full" color="secondary" [routerLink]="getWordsRouterLink()">Weiter
+    </ion-button>
+  </div>
+</ion-content>
