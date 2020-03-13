@@ -14,9 +14,11 @@
       </ion-list>
     </form>
 
+    <p>Wieviele Teile braucht man, um dein Superpasswort wiederherzustellen?</p>
     <ion-item>
-      <ion-label>Sicherheit</ion-label>
-      <ion-select placeholder="Auswahl" value="3/5" cancelText="Schließen" okText="Auswählen">
+      <ion-label>Shamirs Kombination</ion-label>
+      <ion-select placeholder="Auswahl" value="3/5" cancelText="Schließen" okText="Auswählen"
+        [formControlName]="combination">
         <ion-select-option value="35">3/5</ion-select-option>
         <ion-select-option value="510">5/10</ion-select-option>
       </ion-select>
