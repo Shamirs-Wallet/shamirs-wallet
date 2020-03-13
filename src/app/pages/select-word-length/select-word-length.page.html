@@ -6,7 +6,8 @@
     </div>
     <ion-item>
       <ion-label>Wörter</ion-label>
-      <ion-select placeholder="Auswahl" value="24" cancelText="Schließen" okText="Auswählen">
+      <ion-select placeholder="Auswahl" value="24" cancelText="Schließen" okText="Auswählen"
+        [formControlName]="wordLengthInput">
         <ion-select-option value="3">3</ion-select-option>
         <ion-select-option value="6">6</ion-select-option>
         <ion-select-option value="9">9</ion-select-option>
