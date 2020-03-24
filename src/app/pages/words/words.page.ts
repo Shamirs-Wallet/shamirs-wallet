@@ -1,18 +1,51 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ShamirService } from 'src/app/services/shamir.service';
 
 @Component({
   selector: 'app-words',
   templateUrl: './words.page.html',
   styleUrls: ['./words.page.scss'],
 })
-export class WordsPage implements OnInit {
+export class WordsPage {
+  routeSubscription: Subscription;
+  words: string[];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    private router: Router,
+    private shamir: ShamirService
+  ) {
+    this.words = Array(this.shamir.wordCount).fill(this.makeid(6));
+    console.log(this.words);
   }
 
-  getWriteCardsRouterLink() {
-    return ['/write-cards', 0, 24, 35]; // TODO Read oder Write?; Wörterlänge holen; Wie übertrag ich die Wörter zum Schreiben?
+  save() {
+    for (const word of this.words) {
+      if (word === undefined || word.length < 4) {
+        return;
+      }
+    }
+
+    this.shamir.words = this.words;
+
+    if (this.shamir.readMode) {
+      this.router.navigate(['/read-cards']);
+    } else {
+      this.router.navigate(['/write-cards']);
+    }
+  }
+
+  // ! TEST ONLY
+  makeid(length: number) {
+    let result = '';
+    const characters = 'abcdefghijklmnopqrstuvwxyz';
+    const charactersLength = characters.length;
+
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
   }
 }

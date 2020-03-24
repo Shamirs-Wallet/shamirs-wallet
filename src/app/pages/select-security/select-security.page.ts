@@ -1,35 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ShamirService } from 'src/app/services/shamir.service';
+import { Combination } from 'src/app/data/combination';
 
 @Component({
   selector: 'app-select-security',
   templateUrl: './select-security.page.html',
   styleUrls: ['./select-security.page.scss'],
 })
-export class SelectSecurityPage implements OnInit {
+export class SelectSecurityPage {
   routeSubscription: Subscription;
   readMode: boolean;
   wordLength: number;
-  mask: FormGroup;
+  combination: number;
+  pin: number;
 
   constructor(
-    private route: ActivatedRoute
+    private router: Router,
+    private shamir: ShamirService
   ) { }
 
-  ngOnInit() {
-    this.routeSubscription = this.route.params.subscribe(async params => {
-      this.readMode = params.read === 1;
-      this.wordLength = Number(params.wordLength);
-    });
+  save() {
+    if (this.pin === undefined || this.combination === undefined) {
+      return;
+    }
 
-    this.mask = new FormGroup({
-      combination: new FormControl({ value: 35, required: true })
-    });
-  }
+    this.shamir.combination = this.combination === 35 ? Combination.Normal : Combination.Extended;
+    this.shamir.pin = this.pin;
 
-  getWordsRouterLink() {
-    return ['/words', this.readMode ? 1 : 0, this.wordLength, this.mask.controls.combination.value];
+    this.router.navigate(['/words']);
   }
 }

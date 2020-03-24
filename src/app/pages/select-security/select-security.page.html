@@ -5,26 +5,25 @@
       <p>Sicher deine Karten mit einem PIN</p>
     </div>
 
-    <form onsubmit="processForm(event)">
+    <form (ngSubmit)="save()">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item>
           <ion-label position="floating">PIN</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-input [(ngModel)]="pin" name="pin" type="number"></ion-input>
         </ion-item>
       </ion-list>
+
+      <ion-item>
+        <ion-label>Shamirs Kombination</ion-label>
+        <ion-select placeholder="Auswahl" value="3/5" cancelText="Schließen" okText="Auswählen"
+          [(ngModel)]="combination" name="combination">
+          <ion-select-option value="35">3/5</ion-select-option>
+          <ion-select-option value="510">5/10</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <p>Wieviele Teile braucht man, um dein Superpasswort wiederherzustellen?</p>
+
+      <ion-button expand="full" color="secondary" type="submit">Weiter</ion-button>
     </form>
-
-    <p>Wieviele Teile braucht man, um dein Superpasswort wiederherzustellen?</p>
-    <ion-item>
-      <ion-label>Shamirs Kombination</ion-label>
-      <ion-select placeholder="Auswahl" value="3/5" cancelText="Schließen" okText="Auswählen"
-        [formControlName]="combination">
-        <ion-select-option value="35">3/5</ion-select-option>
-        <ion-select-option value="510">5/10</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-button expand="full" color="secondary" [routerLink]="getWordsRouterLink()">Weiter
-    </ion-button>
   </div>
 </ion-content>

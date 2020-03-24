@@ -29,17 +29,31 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/shamirs-secret-sharing",
+                "output": "./shamirs-secret-sharing"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/requirejs",
+                "output": "./requirejs"
               }
             ],
             "styles": [
               {
-                "input": "src/theme/variables.scss"
-              },
-              {
                 "input": "src/global.scss"
               }
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/requirejs/require.js"
+              },
+              {
+                "input": "node_modules/shamirs-secret-sharing/index.js"
+              }
+            ]
           },
           "configurations": {
             "production": {
