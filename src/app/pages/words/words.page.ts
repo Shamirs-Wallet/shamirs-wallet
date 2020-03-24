@@ -29,11 +29,7 @@ export class WordsPage {
 
     this.shamir.words = this.words;
 
-    if (this.shamir.readMode) {
-      this.router.navigate(['/read-cards']);
-    } else {
-      this.router.navigate(['/write-cards']);
-    }
+    this.router.navigate(['/manage-cards']);
   }
 
   // ! TEST ONLY

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { WriteCardsPageRoutingModule } from './write-cards-routing.module';
+import { ManageCardsPageRoutingModule } from './manage-cards-routing.module';
 
-import { WriteCardsPage } from './write-cards.page';
+import { ManageCardsPage } from './manage-cards.page';
 
 import { NFC, Ndef } from '@ionic-native/nfc/ngx';
 
@@ -15,12 +15,12 @@ import { NFC, Ndef } from '@ionic-native/nfc/ngx';
     CommonModule,
     FormsModule,
     IonicModule,
-    WriteCardsPageRoutingModule
+    ManageCardsPageRoutingModule
   ],
   providers: [
     NFC,
     Ndef
   ],
-  declarations: [WriteCardsPage]
+  declarations: [ManageCardsPage]
 })
-export class WriteCardsPageModule {}
+export class ManageCardsPageModule {}

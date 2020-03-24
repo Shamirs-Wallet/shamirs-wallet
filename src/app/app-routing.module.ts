@@ -13,12 +13,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/select-security/select-security.module').then( m => m.SelectSecurityPageModule)
   },
   {
-    path: 'write-cards',
-    loadChildren: () => import('./pages/write-cards/write-cards.module').then( m => m.WriteCardsPageModule)
-  },
-  {
-    path: 'read-cards',
-    loadChildren: () => import('./pages/read-cards/read-cards.module').then( m => m.ReadCardsPageModule)
+    path: 'manage-cards',
+    loadChildren: () => import('./pages/manage-cards/manage-cards.module').then( m => m.ManageCardsPageModule)
   },
   {
     path: 'words',
