@@ -1,33 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ShamirService } from 'src/app/services/shamir.service';
 
 @Component({
   selector: 'app-select-word-length',
   templateUrl: './select-word-length.page.html',
   styleUrls: ['./select-word-length.page.scss'],
 })
-export class SelectWordLengthPage implements OnInit {
+export class SelectWordLengthPage {
   routeSubscription: Subscription;
-  readMode: boolean;
-  mask: FormGroup;
+  wordLength = 24;
 
   constructor(
-    private route: ActivatedRoute
+    private router: Router,
+    private shamir: ShamirService
   ) { }
 
-  ngOnInit() {
-    this.routeSubscription = this.route.params.subscribe(async params => {
-      this.readMode = params.read === 1;
-    });
+  save() {
+    if (this.wordLength === undefined) {
+      return;
+    }
 
-    this.mask = new FormGroup({
-      wordLength: new FormControl({ value: 24, required: true })
-    });
-  }
+    this.shamir.wordCount = this.wordLength;
 
-  getSelectSecurityRouterLink() {
-    return ['/select-security', this.readMode ? 1 : 0, this.mask.controls.wordLength.value];
+    this.router.navigate(['/select-security']);
   }
 }

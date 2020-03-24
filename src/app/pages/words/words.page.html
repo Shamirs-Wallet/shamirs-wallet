@@ -5,108 +5,15 @@
       <p>Tipp jetzt deine BIP39 Wörter ein</p>
     </div>
 
-    <form onsubmit="processForm(event)">
+    <form (ngSubmit)="save()">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
-        <ion-item>
-          <ion-label position="floating">Wort 1</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 2</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 3</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 4</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 5</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 6</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 7</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 8</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 9</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 10</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 11</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 12</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 13</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 14</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 15</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 16</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 17</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 18</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 19</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 20</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 21</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 22</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 23</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Wort 24</ion-label>
-          <ion-input type="text" minlength="4"></ion-input>
+        <ion-item *ngFor="let _ of words; let i = index">
+          <ion-label position="floating">Wort {{i + 1}}</ion-label>
+          <ion-input type="text" minlength="4" [(ngModel)]="words[i]" [name]="'word' + i + 1"></ion-input>
         </ion-item>
       </ion-list>
-    </form>
 
-    <ion-button expand="full" color="secondary" [routerLink]="getWriteCardsRouterLink()">Weiter
-    </ion-button>
+      <ion-button expand="full" color="secondary" type="submit">Weiter</ion-button>
+    </form>
   </div>
 </ion-content>
