@@ -8,13 +8,15 @@ declare var { split, combine }: any;
   providedIn: 'root'
 })
 export class ShamirService {
-  private shards: string[];
+  shards: string[];
 
   readMode: boolean;
   wordCount = 0;
   combination: Combination;
   pin: number;
   words: string[];
+  shares = this.combination === Combination.Normal ? 3 : 5;
+  threshold = this.combination === Combination.Normal ? 5 : 10;
 
   constructor() {
     this.wordCount = 24;
@@ -28,14 +30,17 @@ export class ShamirService {
 
   checkConditions(): boolean {
     if (this.combination === undefined) {
+      console.warn('Keine Kombination ausgewählt');
       return false;
     }
 
     if (this.wordCount === 0) {
+      console.warn('Die Anzahl der Wörter wurde nicht gewählt');
       return false;
     }
 
     if (this.words.length === 0) {
+      console.warn('Keine Wörter zum Verschlüsseln vorhanden');
       return false;
     }
 
@@ -53,6 +58,7 @@ export class ShamirService {
 
     console.log(shards);
 
+    // this.shards = shards;
     this.shards = [];
   }
 
