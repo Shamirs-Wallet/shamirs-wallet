@@ -5,7 +5,7 @@
       <p>Tipp jetzt deine BIP39 Wörter ein</p>
     </div>
 
-    <form (ngSubmit)="save()">
+    <form (ngSubmit)="save()" *ngIf="words">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item *ngFor="let _ of words; let i = index">
           <ion-label position="floating">Wort {{i + 1}}</ion-label>
