@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Combination } from '../data/combination';
 import { Buffer } from 'buffer';
 
 declare var { split, combine }: any;
@@ -8,15 +7,18 @@ declare var { split, combine }: any;
   providedIn: 'root'
 })
 export class ShamirService {
-  shards: string[];
+  private _shards: string[];
 
   readMode: boolean;
   wordCount = 0;
-  combination: Combination;
-  pin: number;
   words: string[];
-  shares = this.combination === Combination.Normal ? 3 : 5;
-  threshold = this.combination === Combination.Normal ? 5 : 10;
+  pin: number;
+  shares: number;
+  threshold: number;
+
+  get shards() {
+    return this._shards;
+  }
 
   constructor() {
     this.wordCount = 24;
@@ -24,64 +26,39 @@ export class ShamirService {
 
   clear() {
     this.wordCount = 0;
-    this.combination = undefined;
     this.words = [];
   }
 
-  checkConditions(): boolean {
-    if (this.combination === undefined) {
-      console.warn('Keine Kombination ausgewählt');
-      return false;
-    }
-
-    if (this.wordCount === 0) {
-      console.warn('Die Anzahl der Wörter wurde nicht gewählt');
-      return false;
-    }
-
-    if (this.words.length === 0) {
-      console.warn('Keine Wörter zum Verschlüsseln vorhanden');
-      return false;
-    }
-
-    return true;
-  }
-
   generateShards() {
-    if (this.checkConditions() === false) {
-      console.error('Die Vorraussetzungen werden nicht erfüllt');
-      return;
-    }
-
     const secret = Buffer.from(this.words.join(' '));
-    const shards = split(secret, { shares: 5, threshold: 3 });
+    const shards = split(secret, { shares: this.shares, threshold: this.threshold });
 
     console.log(shards);
 
-    // this.shards = shards;
-    this.shards = [];
+    this._shards = shards;
   }
 
   addShard(shard: string) {
-    if (this.checkConditions() === false) {
-      throw new Error('Kombination nicht ausgewählt.');
-    }
-
-    if (Combination.Normal && this.shards.length > 5) {
-      console.warn('Bei Kombination 3/5 wurden bereits alle Teilschlüssel eingescannt');
-      return;
-    }
-
-    if (Combination.Extended && this.shards.length > 10) {
-      console.warn('Bei Kombination 5/10 wurden bereits alle Teilschlüssel eingescannt');
+    if (this.shards.length > this.shares) {
+      console.error(`Es existieren mehr Scherben als konfiguriert. Scherben: ${this.shards.length}, Gewollt: ${this.shares}`);
       return;
     }
 
     if (this.shards.includes(shard)) {
-      throw new Error('Teilschlüssel wurde bereits hinzugefügt');
+      console.error('Scherbe wurde bereits hinzugefügt');
     }
 
     this.shards.push(shard);
+  }
+
+  deleteShard(index: number) {
+    const shard = this.shards[index];
+    if (shard === undefined) {
+      console.error('Scherbe konnte nicht entfernt werden.');
+      return;
+    }
+
+    delete this.shards[index];
   }
 
   getSuperPasswort() {

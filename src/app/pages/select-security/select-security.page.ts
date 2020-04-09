@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ShamirService } from 'src/app/services/shamir.service';
-import { Combination } from 'src/app/data/combination';
 
 @Component({
   selector: 'app-select-security',
@@ -27,7 +25,14 @@ export class SelectSecurityPage {
       return;
     }
 
-    this.shamir.combination = this.combination === 35 ? Combination.Normal : Combination.Extended;
+    if (this.combination === 35) {
+      this.shamir.shares = 5;
+      this.shamir.threshold = 3;
+    } else if (this.combination === 105) {
+      this.shamir.shares = 10;
+      this.shamir.threshold = 5;
+    }
+
     this.shamir.pin = this.pin;
 
     this.router.navigate(['/words']);
