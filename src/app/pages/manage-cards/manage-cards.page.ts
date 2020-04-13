@@ -3,6 +3,7 @@ import { NFC, Ndef, NdefEvent } from '@ionic-native/nfc/ngx';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-cards',
@@ -10,17 +11,18 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./manage-cards.page.scss'],
 })
 export class ManageCardsPage implements OnInit, OnDestroy {
-  NdefListenerSubscription: Subscription;
-  readMode = this.shamir.readMode;
-  shardWroteCounter = 0;
+  private NdefListenerSubscription: Subscription;
+  private NFCisWriting: boolean;
 
-  private isWriting: boolean;
+  readMode = this.shamir.readMode;
+  shardsWroteCounter = 0;
 
   constructor(
     private shamir: ShamirService,
     public nfc: NFC,
     public ndef: Ndef,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private router: Router
   ) {
     this.shamir.generateShards();
   }
@@ -65,19 +67,25 @@ export class ManageCardsPage implements OnInit, OnDestroy {
   }
 
   writeTag() {
-    if (!this.isWriting && this.shardWroteCounter <= this.shamir.threshold) {
-      console.log('this.shardWroteCounter ' + this.shardWroteCounter);
+    if (!this.NFCisWriting && this.shardsWroteCounter <= this.shamir.threshold) {
+      console.log('this.shardWroteCounter ' + this.shardsWroteCounter);
 
-      this.isWriting = true;
-      this.nfc.write([this.shamir.shards[this.shardWroteCounter]])
+      this.NFCisWriting = true;
+
+      const record = this.ndef.textRecord(this.shamir.shards[this.shardsWroteCounter]);
+
+      this.nfc.write([record])
         .then(() => {
-          this.isWriting = false;
-          console.log('written');
-          this.shardWroteCounter++;
+          this.NFCisWriting = false;
+          this.shardsWroteCounter++;
+
+          if (this.shardsWroteCounter === this.shamir.shards.length) {
+            this.router.navigate(['/finish']);
+          }
         })
         .catch(err => {
           console.error(err);
-          this.isWriting = false;
+          this.NFCisWriting = false;
         });
     }
   }
