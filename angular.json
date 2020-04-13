@@ -32,11 +32,6 @@
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/shamirs-secret-sharing",
-                "output": "./shamirs-secret-sharing"
-              },
-              {
-                "glob": "**/*",
                 "input": "node_modules/requirejs",
                 "output": "./requirejs"
               }
@@ -49,9 +44,6 @@
             "scripts": [
               {
                 "input": "node_modules/requirejs/require.js"
-              },
-              {
-                "input": "node_modules/shamirs-secret-sharing/index.js"
               }
             ]
           },
