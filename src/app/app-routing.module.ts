@@ -21,7 +21,11 @@ const routes: Routes = [
   {
     path: 'words',
     loadChildren: () => import('./pages/words/words.module').then(m => m.WordsPageModule)
+  },  {
+    path: 'finish',
+    loadChildren: () => import('./pages/finish/finish.module').then( m => m.FinishPageModule)
   },
+
 ];
 
 @NgModule({
