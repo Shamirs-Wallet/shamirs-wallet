@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Buffer } from 'buffer';
-
-declare var { split, combine }: any;
+import { split, combine } from 'shamirs-secret-sharing-ts';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,7 @@ export class ShamirService {
   private _shards: string[];
 
   readMode: boolean;
-  wordCount = 0;
+  wordCount: number;
   words: string[];
   pin: number;
   shares: number;
@@ -20,16 +19,19 @@ export class ShamirService {
     return this._shards;
   }
 
-  constructor() {
-    this.wordCount = 24;
-  }
-
   clear() {
     this.wordCount = 0;
     this.words = [];
   }
 
   generateShards() {
+    console.log('readMode ', this.readMode);
+    console.log('wordCount ', this.wordCount);
+    console.log('words ', this.words);
+    console.log('pin ', this.pin);
+    console.log('shares ', this.shares);
+    console.log('threshold ', this.threshold);
+
     const secret = Buffer.from(this.words.join(' '));
     const shards = split(secret, { shares: this.shares, threshold: this.threshold });
 

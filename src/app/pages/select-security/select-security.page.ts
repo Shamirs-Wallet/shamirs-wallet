@@ -12,7 +12,7 @@ export class SelectSecurityPage {
   routeSubscription: Subscription;
   readMode: boolean;
   wordLength: number;
-  combination: number;
+  combination: string;
   pin: number;
 
   constructor(
@@ -25,12 +25,14 @@ export class SelectSecurityPage {
       return;
     }
 
-    if (this.combination === 35) {
-      this.shamir.shares = 5;
+    console.log('combination', this.combination);
+
+    if (this.combination === '35') {
       this.shamir.threshold = 3;
-    } else if (this.combination === 105) {
-      this.shamir.shares = 10;
+      this.shamir.shares = 5;
+    } else if (this.combination === '510') {
       this.shamir.threshold = 5;
+      this.shamir.shares = 10;
     }
 
     this.shamir.pin = this.pin;

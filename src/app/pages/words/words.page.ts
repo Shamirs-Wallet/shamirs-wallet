@@ -8,7 +8,7 @@ import { ShamirService } from 'src/app/services/shamir.service';
   templateUrl: './words.page.html',
   styleUrls: ['./words.page.scss'],
 })
-export class WordsPage {
+export class WordsPage implements OnInit {
   routeSubscription: Subscription;
   words: string[];
 
@@ -16,6 +16,10 @@ export class WordsPage {
     private router: Router,
     private shamir: ShamirService
   ) {
+  }
+
+  ngOnInit() {
+    console.log(this.shamir.wordCount);
     this.words = Array(this.shamir.wordCount).fill(this.makeid(6));
     console.log(this.words);
   }
