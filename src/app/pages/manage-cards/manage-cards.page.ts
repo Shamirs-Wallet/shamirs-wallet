@@ -3,7 +3,6 @@ import { NFC, Ndef, NdefEvent } from '@ionic-native/nfc/ngx';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { ToastController, NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-cards',
@@ -67,22 +66,27 @@ export class ManageCardsPage implements OnInit, OnDestroy {
   }
 
   writeTag() {
-    if (!this.NFCisWriting && this.shardsWroteCounter <= this.shamir.threshold) {
+    console.log('this.shardsWroteCounter', this.shardsWroteCounter);
+    console.log('this.shamir.threshold', this.shamir.threshold);
+    console.log('this.shamir.shares', this.shamir.shares);
+
+    if (!this.NFCisWriting && this.shardsWroteCounter < this.shamir.shares) {
       console.log('this.shardWroteCounter ' + this.shardsWroteCounter);
 
       this.NFCisWriting = true;
 
-      const record = this.ndef.textRecord(this.shamir.shards[this.shardsWroteCounter]);
+      const shard = this.shamir.shards[this.shardsWroteCounter];
+      const base64encoded = shard.toString('base64');
+      const record = this.ndef.textRecord(base64encoded);
 
       this.nfc.write([record])
         .then(() => {
           this.NFCisWriting = false;
+          this.shardsWroteCounter++;
 
           if (this.shardsWroteCounter === this.shamir.shards.length) {
             this.navigation.navigateForward(['/finish']);
           }
-
-          this.shardsWroteCounter++;
         })
         .catch(err => {
           console.error(err);
