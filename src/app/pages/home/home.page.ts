@@ -13,10 +13,17 @@ export class HomePage {
   constructor(
     private navigation: NavController,
     private shamir: ShamirService
-  ) {}
+  ) {
+    this.shamir.initialize();
+  }
 
   start(readMode: boolean) {
     this.shamir.readMode = readMode;
-    this.navigation.navigateForward(['/select-word-length']);
+
+    if (readMode) {
+      this.navigation.navigateForward(['/combination']);
+    } else {
+      this.navigation.navigateForward(['/select-word-length']);
+    }
   }
 }

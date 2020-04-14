@@ -10,7 +10,7 @@ import { isNumber } from 'util';
 export class ConditionsGuard implements CanActivate {
   constructor(
     private shamir: ShamirService
-  ) {}
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -20,6 +20,18 @@ export class ConditionsGuard implements CanActivate {
 
   // TODO Move to Guard
   checkConditions(): boolean {
+    if (this.shamir.readMode) {
+      return this.checkConditionsReading();
+    } else {
+      return this.checkConditionsWriting();
+    }
+  }
+
+  checkConditionsReading() {
+    return true;
+  }
+
+  checkConditionsWriting() {
     if (!this.shamir.wordCount || this.shamir.wordCount === 0) {
       console.warn('Die Anzahl der Wörter wurde nicht gewählt');
       return false;
@@ -42,5 +54,4 @@ export class ConditionsGuard implements CanActivate {
 
     return true;
   }
-
 }

@@ -12,9 +12,10 @@ import { Subscription } from 'rxjs';
 export class ManageCardsPage implements OnInit, OnDestroy {
   private NdefListenerSubscription: Subscription;
   private NFCisWriting: boolean;
+  private NFCisReading: boolean;
 
   readMode = this.shamir.readMode;
-  shardsWroteCounter = 0;
+  shardsCounter = 0;
 
   constructor(
     private shamir: ShamirService,
@@ -23,7 +24,9 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     private toastController: ToastController,
     private navigation: NavController,
   ) {
-    this.shamir.generateShards();
+    if (!this.shamir.readMode) {
+      this.shamir.generateShards();
+    }
   }
 
   ngOnInit() {
@@ -66,25 +69,25 @@ export class ManageCardsPage implements OnInit, OnDestroy {
   }
 
   writeTag() {
-    console.log('this.shardsWroteCounter', this.shardsWroteCounter);
+    console.log('this.shardsWroteCounter', this.shardsCounter);
     console.log('this.shamir.threshold', this.shamir.threshold);
     console.log('this.shamir.shares', this.shamir.shares);
 
-    if (!this.NFCisWriting && this.shardsWroteCounter < this.shamir.shares) {
-      console.log('this.shardWroteCounter ' + this.shardsWroteCounter);
+    if (!this.NFCisWriting && this.shardsCounter < this.shamir.shares) {
+      console.log('this.shardWroteCounter ' + this.shardsCounter);
 
       this.NFCisWriting = true;
 
-      const shard = this.shamir.shards[this.shardsWroteCounter];
+      const shard = this.shamir.shards[this.shardsCounter];
       const base64encoded = shard.toString('base64');
       const record = this.ndef.textRecord(base64encoded);
 
       this.nfc.write([record])
         .then(() => {
           this.NFCisWriting = false;
-          this.shardsWroteCounter++;
+          this.shardsCounter++;
 
-          if (this.shardsWroteCounter === this.shamir.shards.length) {
+          if (this.shardsCounter === this.shamir.shards.length) {
             this.navigation.navigateForward(['/finish']);
           }
         })
@@ -96,9 +99,20 @@ export class ManageCardsPage implements OnInit, OnDestroy {
   }
 
   readTag(data: NdefEvent) {
-    const payload = data.tag.ndefMessage[0].payload;
-    // const tagContent = this.nfc.bytesToString(payload).substring(3);
-    // this.readingTag = false;
-    console.log('payload', payload);
+    if (!this.NFCisReading && this.shardsCounter < this.shamir.threshold) {
+      this.NFCisReading = true;
+      this.shardsCounter++;
+
+      const payload = data.tag.ndefMessage[0].payload;
+      const tagContent = this.nfc.bytesToString(payload).substring(3);
+
+      this.shamir.addShard(Buffer.from(tagContent, 'base64'));
+
+      this.NFCisReading = false;
+
+      if (this.shardsCounter === this.shamir.threshold) {
+        this.navigation.navigateForward(['/finish']);
+      }
+    }
   }
 }

@@ -28,6 +28,10 @@ export class SelectSecurityPage {
 
     this.shamir.pin = this.pin;
 
-    this.navigation.navigateForward(['/combination']);
+    if (this.shamir.readMode) {
+      this.navigation.navigateForward(['/manage-cards']);
+    } else {
+      this.navigation.navigateForward(['/combination']);
+    }
   }
 }

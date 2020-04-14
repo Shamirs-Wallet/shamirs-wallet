@@ -1,15 +1,30 @@
 <ion-content [fullscreen]="true">
-  <div id="container">
-    <div id="title">
-      <strong>Fertig!</strong>
-      <p>Deine Scherben wurden erstellt und dein BIP39 Seed ist somit gespeichert!</p>
+  <ng-container *ngIf="shamir.readMode">
+    <div id="container">
+      <div id="title">
+        <strong>Fertig!</strong>
+        <p>Deine Scherben wurden zusammengesetzt! Unten findest du dein BIP39 Passwort</p>
+      </div>
+
+      <p>{{password}}</p>
+
+      <ion-button expand="full" color="secondary" (click)="backToHome()">Zurück zur Startseite</ion-button>
     </div>
+  </ng-container>
 
-    <p>Du solltest nun deine Scherben an unterschiedlichen Orten aufbewahren.</p>
-    <p>Je weiter die Scherben voneinander entfernt sind desto besser.</p>
-    <p>Nur du solltest die Standorte deiner Scherben kennen. Damit</p>
-    <p>bietet dir Shamirs Wallet maximale Sicherheit.</p>
+  <ng-container *ngIf="!shamir.readMode">
+    <div id="container">
+      <div id="title">
+        <strong>Fertig!</strong>
+        <p>Deine Scherben wurden erstellt und dein BIP39 Seed ist somit gespeichert!</p>
+      </div>
 
-    <ion-button expand="full" color="secondary" (click)="backToHome()">Zurück zur Startseite</ion-button>
-  </div>
+      <p>Du solltest nun deine Scherben an unterschiedlichen Orten aufbewahren.</p>
+      <p>Je weiter die Scherben voneinander entfernt sind desto besser.</p>
+      <p>Nur du solltest die Standorte deiner Scherben kennen. Damit</p>
+      <p>bietet dir Shamirs Wallet maximale Sicherheit.</p>
+
+      <ion-button expand="full" color="secondary" (click)="backToHome()">Zurück zur Startseite</ion-button>
+    </div>
+  </ng-container>
 </ion-content>
