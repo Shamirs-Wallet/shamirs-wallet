@@ -7,9 +7,9 @@
 
     <form (ngSubmit)="save()" *ngIf="words">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
-        <ion-item *ngFor="let _ of words; let i = index">
+        <ion-item *ngFor="let word of words; let i = index">
           <ion-label position="floating">Wort {{i + 1}}</ion-label>
-          <ion-input type="text" minlength="4" [(ngModel)]="words[i]" [name]="'word' + i + 1"></ion-input>
+          <ion-input type="text" minlength="4" [(ngModel)]="word" [name]="'word' + i" ></ion-input>
         </ion-item>
       </ion-list>
 
