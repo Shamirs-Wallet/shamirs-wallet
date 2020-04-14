@@ -6,7 +6,7 @@ import { split, combine } from 'shamirs-secret-sharing-ts';
   providedIn: 'root'
 })
 export class ShamirService {
-  private _shards: string[];
+  private _shards: Buffer[];
 
   readMode: boolean;
   wordCount: number;
@@ -35,12 +35,10 @@ export class ShamirService {
     const secret = Buffer.from(this.words.join(' '));
     const shards = split(secret, { shares: this.shares, threshold: this.threshold });
 
-    console.log(shards);
-
     this._shards = shards;
   }
 
-  addShard(shard: string) {
+  addShard(shard: Buffer) {
     if (this.shards.length > this.shares) {
       console.error(`Es existieren mehr Scherben als konfiguriert. Scherben: ${this.shards.length}, Gewollt: ${this.shares}`);
       return;
