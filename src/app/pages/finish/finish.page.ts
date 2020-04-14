@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-finish',
@@ -9,14 +10,14 @@ import { Router } from '@angular/router';
 export class FinishPage implements OnInit {
 
   constructor(
-    private router: Router
+    private navigation: NavController,
   ) { }
 
   ngOnInit() {
   }
 
   backToHome() {
-    this.router.navigate(['/home']); // Navigate Back to Home
+    this.navigation.navigateRoot(['/home']); // Navigate Back to Home
   }
 
 }

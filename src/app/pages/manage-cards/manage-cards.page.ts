@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NFC, Ndef, NdefEvent } from '@ionic-native/nfc/ngx';
 import { ShamirService } from 'src/app/services/shamir.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -22,7 +22,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     public nfc: NFC,
     public ndef: Ndef,
     private toastController: ToastController,
-    private router: Router
+    private navigation: NavController,
   ) {
     this.shamir.generateShards();
   }
@@ -79,7 +79,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
           this.NFCisWriting = false;
 
           if (this.shardsWroteCounter === this.shamir.shards.length) {
-            this.router.navigate(['/finish']);
+            this.navigation.navigateForward(['/finish']);
           }
 
           this.shardsWroteCounter++;

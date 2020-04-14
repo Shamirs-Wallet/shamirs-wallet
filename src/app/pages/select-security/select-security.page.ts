@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ShamirService } from 'src/app/services/shamir.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-select-security',
@@ -16,7 +17,7 @@ export class SelectSecurityPage {
   pin: number;
 
   constructor(
-    private router: Router,
+    private navigation: NavController,
     private shamir: ShamirService
   ) { }
 
@@ -27,6 +28,6 @@ export class SelectSecurityPage {
 
     this.shamir.pin = this.pin;
 
-    this.router.navigate(['/combination']);
+    this.navigation.navigateForward(['/combination']);
   }
 }

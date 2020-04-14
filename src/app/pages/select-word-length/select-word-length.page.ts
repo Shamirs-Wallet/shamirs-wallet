@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ShamirService } from 'src/app/services/shamir.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-select-word-length',
@@ -14,7 +15,7 @@ export class SelectWordLengthPage {
   wordLength = 24;
 
   constructor(
-    private router: Router,
+    private navigation: NavController,
     private shamir: ShamirService
   ) { }
 
@@ -25,6 +26,6 @@ export class SelectWordLengthPage {
 
     this.shamir.wordCount = this.wordLength;
 
-    this.router.navigate(['/select-security']);
+    this.navigation.navigateForward(['/select-security']);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ShamirService } from 'src/app/services/shamir.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-words',
@@ -13,7 +14,7 @@ export class WordsPage implements OnInit {
   words: string[];
 
   constructor(
-    private router: Router,
+    private navigation: NavController,
     private shamir: ShamirService
   ) {
   }
@@ -33,7 +34,7 @@ export class WordsPage implements OnInit {
 
     this.shamir.words = this.words;
 
-    this.router.navigate(['/manage-cards']);
+    this.navigation.navigateForward(['/manage-cards']);
   }
 
   // ! TEST ONLY
