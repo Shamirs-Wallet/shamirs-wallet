@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <div id="title">
+      <strong>Shamirs Kombination</strong>
+      <p>Wieviele Scherben braucht man, um dein BIP39 Passwort wiederherzustellen?</p>
+    </div>
+
+    <form (ngSubmit)="save()">
+      <ion-item>
+        <ion-label>Kombination</ion-label>
+        <ion-select placeholder="Auswahl" value="3/5" cancelText="Schließen" okText="Auswählen"
+          [(ngModel)]="combination" name="combination">
+          <ion-select-option value="35">3/5</ion-select-option>
+          <ion-select-option value="510">5/10</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="full" color="secondary" type="submit">Weiter</ion-button>
+    </form>
+  </div>
+</ion-content>
