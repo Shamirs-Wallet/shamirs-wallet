@@ -32,6 +32,10 @@ export class CombinationPage implements OnInit {
       this.shamir.shares = 10;
     }
 
-    this.navigation.navigateForward(['/words']);
+    if (this.shamir.readMode) {
+      this.navigation.navigateForward(['/select-security']);
+    } else {
+      this.navigation.navigateForward(['/words']);
+    }
   }
 }

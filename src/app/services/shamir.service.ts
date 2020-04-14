@@ -19,9 +19,15 @@ export class ShamirService {
     return this._shards;
   }
 
-  clear() {
-    this.wordCount = 0;
-    this.words = [];
+  initialize() {
+    this._shards = new Array<Buffer>();
+
+    this.readMode = undefined;
+    this.wordCount = undefined;
+    this.words = undefined;
+    this.pin = undefined;
+    this.shares = undefined;
+    this.threshold = undefined;
   }
 
   generateShards() {
@@ -62,6 +68,10 @@ export class ShamirService {
   }
 
   getSuperPasswort() {
-    return combine(this.shards);
+    if (this.readMode) {
+      return combine(this.shards).toString('utf8');
+    } else {
+      return null;
+    }
   }
 }
