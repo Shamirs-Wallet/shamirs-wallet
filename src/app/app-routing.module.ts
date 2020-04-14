@@ -25,6 +25,10 @@ const routes: Routes = [
     path: 'finish',
     loadChildren: () => import('./pages/finish/finish.module').then( m => m.FinishPageModule)
   },
+  {
+    path: 'combination',
+    loadChildren: () => import('./pages/combination/combination.module').then( m => m.CombinationPageModule)
+  },
 
 ];
 
