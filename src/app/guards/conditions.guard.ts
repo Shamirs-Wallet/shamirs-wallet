@@ -20,12 +20,12 @@ export class ConditionsGuard implements CanActivate {
 
   // TODO Move to Guard
   checkConditions(): boolean {
-    if (this.shamir.wordCount === 0) {
+    if (!this.shamir.wordCount || this.shamir.wordCount === 0) {
       console.warn('Die Anzahl der Wörter wurde nicht gewählt');
       return false;
     }
 
-    if (this.shamir.words.length === 0) {
+    if (!this.shamir.words || this.shamir.words.length === 0) {
       console.warn('Keine Wörter zum Verschlüsseln vorhanden');
       return false;
     }
@@ -35,7 +35,7 @@ export class ConditionsGuard implements CanActivate {
       return false;
     }
 
-    if (this.shamir.shares < this.shamir.threshold) {
+    if (!this.shamir.shares || !this.shamir.threshold || this.shamir.shares < this.shamir.threshold) {
       console.error('Gewählte Kombination der Scherben nicht möglich');
       return false;
     }
