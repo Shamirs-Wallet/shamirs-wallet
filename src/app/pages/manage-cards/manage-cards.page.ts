@@ -77,11 +77,12 @@ export class ManageCardsPage implements OnInit, OnDestroy {
       this.nfc.write([record])
         .then(() => {
           this.NFCisWriting = false;
-          this.shardsWroteCounter++;
 
           if (this.shardsWroteCounter === this.shamir.shards.length) {
             this.router.navigate(['/finish']);
           }
+
+          this.shardsWroteCounter++;
         })
         .catch(err => {
           console.error(err);
