@@ -18,7 +18,6 @@ export class ConditionsGuard implements CanActivate {
     return this.checkConditions();
   }
 
-  // TODO Move to Guard
   checkConditions(): boolean {
     if (this.shamir.readMode) {
       return this.checkConditionsReading();
@@ -28,6 +27,16 @@ export class ConditionsGuard implements CanActivate {
   }
 
   checkConditionsReading() {
+    if (!isNumber(this.shamir.pin) || this.shamir.pin === undefined || this.shamir.pin === 0) {
+      console.warn('Kein Pin gewählt');
+      return false;
+    }
+
+    if (!this.shamir.shares || !this.shamir.threshold || this.shamir.shares < this.shamir.threshold) {
+      console.error('Gewählte Kombination der Scherben nicht möglich');
+      return false;
+    }
+
     return true;
   }
 
