@@ -11,18 +11,18 @@ import { NavController } from '@ionic/angular';
 })
 export class WordsPage implements OnInit {
   routeSubscription: Subscription;
-  words: string[];
+  words = new Array<string>();
 
   constructor(
     private navigation: NavController,
     private shamir: ShamirService
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
-    console.log(this.shamir.wordCount);
-    this.words = Array(this.shamir.wordCount).fill(this.makeid(6));
-    console.log(this.words);
+    for (let index = 0; index < this.shamir.wordCount; index++) {
+      // this.words.push('');
+      this.words.push('TEST'); // ! TEST ONLY
+    }
   }
 
   save() {
@@ -35,18 +35,5 @@ export class WordsPage implements OnInit {
     this.shamir.words = this.words;
 
     this.navigation.navigateForward(['/manage-cards']);
-  }
-
-  // ! TEST ONLY
-  makeid(length: number) {
-    let result = '';
-    const characters = 'abcdefghijklmnopqrstuvwxyz';
-    const charactersLength = characters.length;
-
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-
-    return result;
   }
 }
