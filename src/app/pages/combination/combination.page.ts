@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-combination',
@@ -11,8 +12,8 @@ export class CombinationPage implements OnInit {
   combination: string;
 
   constructor(
-    private shamir: ShamirService,
-    private router: Router
+    private navigation: NavController,
+    private shamir: ShamirService
   ) { }
 
   ngOnInit() {
@@ -31,6 +32,6 @@ export class CombinationPage implements OnInit {
       this.shamir.shares = 10;
     }
 
-    this.router.navigate(['/words']);
+    this.navigation.navigateForward(['/words']);
   }
 }

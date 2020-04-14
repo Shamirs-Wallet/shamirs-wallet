@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShamirService } from 'src/app/services/shamir.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,12 @@ import { ShamirService } from 'src/app/services/shamir.service';
 export class HomePage {
 
   constructor(
-    private router: Router,
+    private navigation: NavController,
     private shamir: ShamirService
   ) {}
 
   start(readMode: boolean) {
     this.shamir.readMode = readMode;
-    this.router.navigate(['/select-word-length']);
+    this.navigation.navigateForward(['/select-word-length']);
   }
 }
