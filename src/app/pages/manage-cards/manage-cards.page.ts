@@ -11,8 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class ManageCardsPage implements OnInit, OnDestroy {
   private NdefListenerSubscription: Subscription;
-  private NFCisWriting: boolean;
-  private NFCisReading: boolean;
+  private NFCisBusy: boolean;
 
   readMode = this.shamir.readMode;
   shardsCounter = 0;
@@ -22,7 +21,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     public nfc: NFC,
     public ndef: Ndef,
     private toastController: ToastController,
-    private navigation: NavController,
+    private navigation: NavController
   ) {
     if (!this.shamir.readMode) {
       this.shamir.generateShards();
@@ -37,82 +36,85 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     this.NdefListenerSubscription.unsubscribe();
   }
 
-  async attachToNFC() {
-    if (await this.nfc.enabled() === false) {
-      const toast = await this.toastController.create({
-        message: 'Auf dein NFC-Modul konnte nicht zugegriffen werden. Ist es aktiviert?',
-        duration: Infinity,
-        buttons: [
-          {
-            text: 'Nochmal versuchen',
-            role: 'cancel',
-            icon: 'refresh-outline',
-            handler: () => {
-              this.attachToNFC();
-            }
-          }
-        ]
-      });
-      toast.present();
-    }
-
+  attachToNFC() {
     this.NdefListenerSubscription = this.nfc.addNdefListener()
-      .subscribe((data: NdefEvent) => {
+      .subscribe(async (data: NdefEvent) => {
         if (this.readMode) {
           this.readTag(data);
         } else {
-          this.writeTag();
+          await this.writeTag();
         }
-      }, err => {
+      }, async err => {
         console.error(err);
+
+        const toast = await this.toastController.create({
+          message: 'Auf dein NFC-Modul konnte nicht zugegriffen werden. Ist es aktiviert?',
+          duration: Infinity,
+          buttons: [
+            {
+              text: 'Nochmal versuchen',
+              role: 'cancel',
+              icon: 'refresh-outline',
+              handler: () => {
+                this.attachToNFC();
+              }
+            }
+          ]
+        });
+        await toast.present();
       });
   }
 
-  writeTag() {
-    console.log('this.shardsWroteCounter', this.shardsCounter);
-    console.log('this.shamir.threshold', this.shamir.threshold);
-    console.log('this.shamir.shares', this.shamir.shares);
+  readTag(data: NdefEvent) {
+    if (this.NFCisBusy || this.shardsCounter >= this.shamir.threshold) {
+      return;
+    }
 
-    if (!this.NFCisWriting && this.shardsCounter < this.shamir.shares) {
-      console.log('this.shardWroteCounter ' + this.shardsCounter);
+    this.NFCisBusy = true;
+    this.shardsCounter++;
 
-      this.NFCisWriting = true;
+    const payload = data.tag.ndefMessage[0].payload;
+    const tagContent = this.nfc.bytesToString(payload).substring(3);
 
-      const shard = this.shamir.shards[this.shardsCounter];
-      const base64encoded = shard.toString('base64');
-      const record = this.ndef.textRecord(base64encoded);
+    this.shamir.addShard(Buffer.from(tagContent, 'base64'));
 
-      this.nfc.write([record])
-        .then(() => {
-          this.NFCisWriting = false;
-          this.shardsCounter++;
+    this.NFCisBusy = false;
 
-          if (this.shardsCounter === this.shamir.shards.length) {
-            this.navigation.navigateForward(['/finish']);
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          this.NFCisWriting = false;
-        });
+    if (this.shardsCounter === this.shamir.threshold) {
+      this.navigation.navigateForward(['/finish']);
     }
   }
 
-  readTag(data: NdefEvent) {
-    if (!this.NFCisReading && this.shardsCounter < this.shamir.threshold) {
-      this.NFCisReading = true;
+  async writeTag() {
+    if (this.NFCisBusy || this.shardsCounter >= this.shamir.shares) {
+      return;
+    }
+
+    this.NFCisBusy = true;
+
+    const shard = this.shamir.shards[this.shardsCounter];
+    const base64encoded = shard.toString('base64');
+    const record = this.ndef.textRecord(base64encoded);
+
+    try {
+      await this.nfc.write([record]);
+      await this.nfc.makeReadOnly();
+
       this.shardsCounter++;
 
-      const payload = data.tag.ndefMessage[0].payload;
-      const tagContent = this.nfc.bytesToString(payload).substring(3);
-
-      this.shamir.addShard(Buffer.from(tagContent, 'base64'));
-
-      this.NFCisReading = false;
-
-      if (this.shardsCounter === this.shamir.threshold) {
+      if (this.shardsCounter === this.shamir.shards.length) {
         this.navigation.navigateForward(['/finish']);
       }
+    } catch (error) {
+      console.error(error);
+
+      const toast = await this.toastController.create({
+        message: 'Versuch es noch einmal',
+        duration: 3000
+      });
+      await toast.present();
     }
+
+    this.NFCisBusy = false;
   }
 }

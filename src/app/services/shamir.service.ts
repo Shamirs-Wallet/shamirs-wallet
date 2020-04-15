@@ -6,7 +6,7 @@ import { split, combine } from 'shamirs-secret-sharing-ts';
   providedIn: 'root'
 })
 export class ShamirService {
-  private _shards: Buffer[];
+  private shards: Buffer[];
 
   readMode: boolean;
   wordCount: number;
@@ -15,12 +15,8 @@ export class ShamirService {
   shares: number;
   threshold: number;
 
-  get shards() {
-    return this._shards;
-  }
-
   initialize() {
-    this._shards = new Array<Buffer>();
+    this.shards = new Array<Buffer>();
 
     this.readMode = undefined;
     this.wordCount = undefined;
@@ -41,7 +37,7 @@ export class ShamirService {
     const secret = Buffer.from(this.words.join(' '));
     const shards = split(secret, { shares: this.shares, threshold: this.threshold });
 
-    this._shards = shards;
+    this.shards = shards;
   }
 
   addShard(shard: Buffer) {

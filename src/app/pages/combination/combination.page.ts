@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ShamirService } from 'src/app/services/shamir.service';
-import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -8,16 +7,13 @@ import { NavController } from '@ionic/angular';
   templateUrl: './combination.page.html',
   styleUrls: ['./combination.page.scss'],
 })
-export class CombinationPage implements OnInit {
+export class CombinationPage {
   combination: string;
 
   constructor(
     private navigation: NavController,
     private shamir: ShamirService
   ) { }
-
-  ngOnInit() {
-  }
 
   save() {
     if (this.combination === undefined) {
