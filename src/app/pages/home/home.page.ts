@@ -11,7 +11,9 @@ export class HomePage {
   constructor(
     private navigation: NavController,
     private shamir: ShamirService
-  ) {
+  ) { }
+  
+  ionViewDidEnter() {
     this.shamir.initialize();
   }
 
