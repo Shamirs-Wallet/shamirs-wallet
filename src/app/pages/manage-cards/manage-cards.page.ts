@@ -49,7 +49,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
 
         const toast = await this.toastController.create({
           message: 'Auf dein NFC-Modul konnte nicht zugegriffen werden. Ist es aktiviert?',
-          duration: Infinity,
+          duration: 20000,
           buttons: [
             {
               text: 'Nochmal versuchen',

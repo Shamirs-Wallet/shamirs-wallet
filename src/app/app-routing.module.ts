@@ -10,10 +10,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/select-word-length/select-word-length.module').then(m => m.SelectWordLengthPageModule)
   },
   {
-    path: 'select-security',
-    loadChildren: () => import('./pages/select-security/select-security.module').then(m => m.SelectSecurityPageModule)
-  },
-  {
     path: 'manage-cards',
     loadChildren: () => import('./pages/manage-cards/manage-cards.module').then(m => m.ManageCardsPageModule),
     canActivate: [ConditionsGuard]
@@ -21,7 +17,8 @@ const routes: Routes = [
   {
     path: 'words',
     loadChildren: () => import('./pages/words/words.module').then(m => m.WordsPageModule)
-  },  {
+  },
+  {
     path: 'finish',
     loadChildren: () => import('./pages/finish/finish.module').then( m => m.FinishPageModule)
   },
