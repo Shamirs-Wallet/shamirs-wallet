@@ -1,10 +1,12 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <div id="title">
-      <strong>Schlüssel generieren</strong>
+      <strong *ngIf="readMode">Scherben sammeln</strong>
+      <strong *ngIf="!readMode">Scherben generieren</strong>
       <p>Halte jetzt deine Karten nacheinander an die Rückseite deines Handys</p>
     </div>
 
-    <p>Karte {{shardsCounter + 1}} von 5</p>
+    <p *ngIf="readMode">Karte {{shardsCounter + 1}} von {{shamir.threshold}}</p>
+    <p *ngIf="!readMode">Karte {{shardsCounter + 1}} von {{shamir.shares}}</p>
   </div>
 </ion-content>

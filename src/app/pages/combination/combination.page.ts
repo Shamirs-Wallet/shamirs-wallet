@@ -29,7 +29,7 @@ export class CombinationPage {
     }
 
     if (this.shamir.readMode) {
-      this.navigation.navigateForward(['/select-security']);
+      this.navigation.navigateForward(['/manage-cards']);
     } else {
       this.navigation.navigateForward(['/words']);
     }

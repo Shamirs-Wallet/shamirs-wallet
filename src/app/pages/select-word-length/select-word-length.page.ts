@@ -22,6 +22,6 @@ export class SelectWordLengthPage {
 
     this.shamir.wordCount = this.wordLength;
 
-    this.navigation.navigateForward(['/select-security']);
+    this.navigation.navigateForward(['/combination']);
   }
 }

@@ -11,7 +11,6 @@ export class ShamirService {
   readMode: boolean;
   wordCount: number;
   words: string[];
-  pin: number;
   shares: number;
   threshold: number;
 
@@ -21,7 +20,6 @@ export class ShamirService {
     this.readMode = undefined;
     this.wordCount = undefined;
     this.words = undefined;
-    this.pin = undefined;
     this.shares = undefined;
     this.threshold = undefined;
   }
@@ -30,11 +28,10 @@ export class ShamirService {
     console.log('readMode ', this.readMode);
     console.log('wordCount ', this.wordCount);
     console.log('words ', this.words);
-    console.log('pin ', this.pin);
     console.log('shares ', this.shares);
     console.log('threshold ', this.threshold);
 
-    const secret = Buffer.from(this.words.join(' '));
+    const secret = Buffer.from(this.words.join(' '), 'utf8');
     const shards = split(secret, { shares: this.shares, threshold: this.threshold });
 
     this.shards = shards;
