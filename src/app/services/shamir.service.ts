@@ -63,6 +63,10 @@ export class ShamirService {
     delete this.shards[index];
   }
 
+  getShards() {
+    return this.shards;
+  }
+
   getSuperPasswort() {
     if (this.readMode) {
       return combine(this.shards).toString('utf8');

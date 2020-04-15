@@ -92,7 +92,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
 
     this.NFCisBusy = true;
 
-    const shard = this.shamir.shards[this.shardsCounter];
+    const shard = this.shamir.getShards()[this.shardsCounter];
     const base64encoded = shard.toString('base64');
     const record = this.ndef.textRecord(base64encoded);
 
@@ -102,7 +102,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
 
       this.shardsCounter++;
 
-      if (this.shardsCounter === this.shamir.shards.length) {
+      if (this.shardsCounter === this.shamir.getShards().length) {
         this.navigation.navigateForward(['/finish']);
       }
     } catch (error) {
