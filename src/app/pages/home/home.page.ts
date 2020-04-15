@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { NavController } from '@ionic/angular';
 
@@ -9,7 +8,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
   constructor(
     private navigation: NavController,
     private shamir: ShamirService

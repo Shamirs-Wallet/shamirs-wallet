@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { NavController } from '@ionic/angular';
 
@@ -10,7 +8,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./select-security.page.scss'],
 })
 export class SelectSecurityPage {
-  routeSubscription: Subscription;
   readMode: boolean;
   wordLength: number;
   combination: string;

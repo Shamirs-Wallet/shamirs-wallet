@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ShamirService } from 'src/app/services/shamir.service';
 
@@ -8,7 +7,7 @@ import { ShamirService } from 'src/app/services/shamir.service';
   templateUrl: './finish.page.html',
   styleUrls: ['./finish.page.scss'],
 })
-export class FinishPage implements OnInit {
+export class FinishPage {
   password = this.shamir.getSuperPasswort();
 
   constructor(
@@ -16,11 +15,7 @@ export class FinishPage implements OnInit {
     private shamir: ShamirService
   ) { }
 
-  ngOnInit() {
-  }
-
   backToHome() {
     this.navigation.navigateRoot(['/home']); // Navigate Back to Home
   }
-
 }

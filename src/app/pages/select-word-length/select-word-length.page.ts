@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { NavController } from '@ionic/angular';
 
@@ -11,7 +8,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./select-word-length.page.scss'],
 })
 export class SelectWordLengthPage {
-  routeSubscription: Subscription;
   wordLength = 24;
 
   constructor(

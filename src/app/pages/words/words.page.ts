@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, } from '@angular/core';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { NavController } from '@ionic/angular';
 
@@ -10,7 +8,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./words.page.scss'],
 })
 export class WordsPage implements OnInit {
-  routeSubscription: Subscription;
   words = new Array<string>();
 
   constructor(
