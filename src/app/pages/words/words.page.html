@@ -1,19 +1,19 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <div id="title">
-      <strong>BIP39 Wörter</strong>
-      <p>Tipp jetzt deine BIP39 Wörter ein</p>
+      <strong translate>pages.words.title</strong>
+      <p translate>pages.words.subtitle</p>
     </div>
 
     <form (ngSubmit)="save()" *ngIf="words">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item *ngFor="let word of words; let i = index">
-          <ion-label position="floating">Wort {{i + 1}}</ion-label>
+          <ion-label position="floating">{{ 'pages.words.form.word' | translate }} {{i + 1}}</ion-label>
           <ion-input type="text" minlength="4" [(ngModel)]="word" [name]="'word' + i" ></ion-input>
         </ion-item>
       </ion-list>
 
-      <ion-button expand="full" color="secondary" type="submit">Weiter</ion-button>
+      <ion-button expand="full" color="secondary" type="submit" translate>pages.words.form.submit</ion-button>
     </form>
   </div>
 </ion-content>
