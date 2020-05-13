@@ -2,30 +2,26 @@
   <ng-container *ngIf="shamir.readMode">
     <div id="container">
       <div id="title">
-        <strong>Fertig!</strong>
-        <p>Deine Scherben wurden zusammengesetzt! Unten findest du dein BIP39 Passwort</p>
+        <strong translate>pages.finish.read-mode.title</strong>
+        <p translate>pages.finish.read-mode.subtitle</p>
       </div>
 
       <p>{{password}}</p>
 
-      <ion-button expand="full" color="secondary" (click)="backToHome()">Zurück zur Startseite</ion-button>
+      <ion-button expand="full" color="secondary" (click)="backToHome()" translate>pages.finish.back-button</ion-button>
     </div>
   </ng-container>
 
   <ng-container *ngIf="!shamir.readMode">
     <div id="container">
       <div id="title">
-        <strong>Fertig!</strong>
-        <p>Deine Scherben wurden erstellt!</p>
+        <strong translate>pages.finish.write-mode.title</strong>
+        <p translate>pages.finish.write-mode.subtitle</p>
       </div>
 
-      <p>Du solltest nun deine Scherben an unterschiedlichen Orten aufbewahren.
-        Je weiter die Scherben voneinander entfernt sind desto besser.
-        Nur du solltest die Standorte deiner Scherben kennen. Damit
-        bietet dir Shamirs Wallet maximale Sicherheit.
-      </p>
+      <p translate>pages.finish.write-mode.information</p>
 
-      <ion-button expand="full" color="secondary" (click)="backToHome()">Zurück zur Startseite</ion-button>
+      <ion-button expand="full" color="secondary" (click)="backToHome()" translate>pages.finish.back-button</ion-button>
     </div>
   </ng-container>
 </ion-content>

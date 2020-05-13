@@ -1,21 +1,22 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <div id="title">
-      <strong>Shamirs Kombination</strong>
-      <p>Wieviele Scherben braucht man, um dein BIP39 Passwort wiederherzustellen?</p>
+      <strong translate>pages.combination.title</strong>
+      <p translate>pages.combination.subtitle</p>
     </div>
 
     <form (ngSubmit)="save()">
       <ion-item>
-        <ion-label>Kombination</ion-label>
-        <ion-select placeholder="Auswahl" value="35" cancelText="Schließen" okText="Auswählen"
-          [(ngModel)]="combination" name="combination">
-          <ion-select-option value="35">3 von 5 Scherben</ion-select-option>
-          <ion-select-option value="510">5 von 10 Scherben</ion-select-option>
+        <ion-label translate>pages.combination.form.label</ion-label>
+        <ion-select [placeholder]='"pages.combination.form.dialog.placeholder" | translate' value="35"
+          [cancelText]='"pages.combination.form.dialog.cancel" | translate'
+          [okText]='"pages.combination.form.dialog.ok" | translate' [(ngModel)]="combination" name="combination">
+          <ion-select-option value="35" translate>pages.combination.form.dialog.options.option1</ion-select-option>
+          <ion-select-option value="510" translate>pages.combination.form.dialog.options.option2</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-button expand="full" color="secondary" type="submit">Weiter</ion-button>
+      <ion-button expand="full" color="secondary" type="submit" translate>pages.combination.form.submit</ion-button>
     </form>
   </div>
 </ion-content>

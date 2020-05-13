@@ -1,12 +1,17 @@
 <ion-content [fullscreen]="true">
   <div id="container">
-    <div id="title">
-      <strong *ngIf="readMode">Scherben sammeln</strong>
-      <strong *ngIf="!readMode">Scherben generieren</strong>
-      <p>Halte jetzt deine Karten nacheinander an die Rückseite deines Handys</p>
+    <div id="title" *ngIf="readMode">
+      <strong translate>pages.manage-cards.read-mode.title</strong>
+      <p translate>pages.manage-cards.read-mode.subtitle</p>
+    </div>
+    <div id="title" *ngIf="!readMode">
+      <strong translate>pages.manage-cards.write-mode.title</strong>
+      <p translate>pages.manage-cards.write-mode.subtitle</p>
     </div>
 
-    <p *ngIf="readMode">Karte {{shardsCounter + 1}} von {{shamir.threshold}}</p>
-    <p *ngIf="!readMode">Karte {{shardsCounter + 1}} von {{shamir.shares}}</p>
+    <p *ngIf="readMode">{{ 'pages.manage-cards.card' | translate }} {{shardsCounter + 1}}
+      {{ 'pages.manage-cards.of' | translate }} {{shamir.threshold}}</p>
+    <p *ngIf="!readMode">{{ 'pages.manage-cards.card' | translate }} {{shardsCounter + 1}}
+      {{ 'pages.manage-cards.of' | translate }} {{shamir.shares}}</p>
   </div>
 </ion-content>

@@ -1,0 +1,72 @@
+{
+  "pages": {
+    "home": {
+      "title": "Shamirs Wallet",
+      "subtitle": "Bereit dein Wallet zu sichern?",
+      "create": "Karten erstellen",
+      "read": "Mnemonic wiederherstellen"
+    },
+    "select-word-length": {
+      "title": "Wortlänge",
+      "subtitle": "Wie viele Wörter hat dein BIP39 Passwort?",
+      "form": {
+        "label": "Wörter",
+        "dialog": {
+          "ok": "Auswählen",
+          "cancel": "Schließen",
+          "placeholder": "Auswahl"
+        },
+        "submit": "Weiter"
+      }
+    },
+    "combination": {
+      "title": "Shamirs Kombination",
+      "subtitle": "Wieviele Karten braucht man, um dein BIP39 Mnemonic Passwort wiederherzustellen?",
+      "form": {
+        "label": "Kombination",
+        "dialog": {
+          "ok": "Auswählen",
+          "cancel": "Schließen",
+          "placeholder": "Auswahl",
+          "options": {
+            "option1": "3 von 5 Karten",
+            "option2": "5 von 10 Karten"
+          }
+        },
+        "submit": "Weiter"
+      }
+    },
+    "words": {
+      "title": "BIP39 Wörter",
+      "subtitle": "Tipp jetzt deine BIP39 Wörter ein",
+      "form": {
+        "word": "Wort",
+        "submit": "Weiter"
+      }
+    },
+    "manage-cards": {
+      "write-mode": {
+        "title": "Karten erstellen",
+        "subtitle": "Halte jetzt deine Karten nacheinander an die Rückseite deines Handys"
+      },
+      "read-mode": {
+        "title": "Karten kombinieren",
+        "subtitle": "Halte jetzt deine Karten nacheinander an die Rückseite deines Handys"
+      },
+      "card": "Karte",
+      "of": "von"
+    },
+    "finish": {
+      "read-mode": {
+        "title": "Das war's!",
+        "subtitle": "Deine Scherben wurden zusammengesetzt! Unten findest du dein BIP39 Passwort"
+      },
+      "write-mode": {
+        "title": "Das war's!",
+        "subtitle": "Deine Scherben wurden erstellt!",
+        "information": "Du solltest nun deine Scherben an unterschiedlichen Orten aufbewahren. \nJe weiter die Scherben voneinander entfernt sind desto besser.\nNur du solltest die Standorte deiner Scherben kennen. Damit\nbietet dir Shamirs Wallet maximale Sicherheit."
+      },
+      "back-button": "Zurück zur Startseite"
+    }
+  }
+}

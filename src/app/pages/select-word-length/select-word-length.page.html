@@ -1,14 +1,15 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <div id="title">
-      <strong>Wortlänge</strong>
-      <p>Wie viele Wörter hat dein BIP39 Passwort?</p>
+      <strong translate>pages.select-word-length.title</strong>
+      <p translate>pages.select-word-length.subtitle</p>
     </div>
     <form (ngSubmit)="save()">
       <ion-item>
-        <ion-label>Wörter</ion-label>
-        <ion-select placeholder="Auswahl" value="24" cancelText="Schließen" okText="Auswählen"
-          [(ngModel)]="wordLength" name="wordLength">
+        <ion-label translate>pages.select-word-length.form.label</ion-label>
+        <ion-select [placeholder]='"pages.select-word-length.form.dialog.placeholder" | translate' value="24"
+          [cancelText]='"pages.select-word-length.form.dialog.cancel" | translate'
+          [okText]='"pages.select-word-length.form.dialog.ok" | translate' [(ngModel)]="wordLength" name="wordLength">
           <ion-select-option value="24">24</ion-select-option>
           <ion-select-option value="21">21</ion-select-option>
           <ion-select-option value="18">18</ion-select-option>
@@ -19,7 +20,8 @@
           <ion-select-option value="3">3</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-button expand="full" color="secondary" type="submit">Weiter</ion-button>
+      <ion-button expand="full" color="secondary" type="submit" translate>pages.select-word-length.form.submit
+      </ion-button>
     </form>
   </div>
 </ion-content>
