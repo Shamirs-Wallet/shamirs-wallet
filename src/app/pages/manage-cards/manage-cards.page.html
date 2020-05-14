@@ -1,10 +1,21 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <div id="title" *ngIf="readMode">
+      <img *ngIf="shardsCounter === 5" src="assets/images/crystal_piece_5.png"/>
+      <img *ngIf="shardsCounter === 4" src="assets/images/crystal_piece_4.png"/>
+      <img *ngIf="shardsCounter === 3" src="assets/images/crystal_piece_3.png"/>
+      <img *ngIf="shardsCounter === 2" src="assets/images/crystal_piece_2.png"/>
+      <img *ngIf="shardsCounter === 1" src="assets/images/crystal_piece_1.png"/>
+      <img *ngIf="shardsCounter === 0" src="assets/images/crystal_piece_0.png"/>
       <strong translate>pages.manage-cards.read-mode.title</strong>
       <p translate>pages.manage-cards.read-mode.subtitle</p>
     </div>
     <div id="title" *ngIf="!readMode">
+      <img *ngIf="shardsCounter === 0" src="assets/images/crystal_piece_5.png"/>
+      <img *ngIf="shardsCounter === 1" src="assets/images/crystal_piece_4.png"/>
+      <img *ngIf="shardsCounter === 2" src="assets/images/crystal_piece_3.png"/>
+      <img *ngIf="shardsCounter === 3" src="assets/images/crystal_piece_2.png"/>
+      <img *ngIf="shardsCounter === 4" src="assets/images/crystal_piece_1.png"/>
       <strong translate>pages.manage-cards.write-mode.title</strong>
       <p translate>pages.manage-cards.write-mode.subtitle</p>
     </div>
