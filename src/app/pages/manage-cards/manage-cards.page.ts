@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { NFC, Ndef, NdefEvent } from '@ionic-native/nfc/ngx';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { ToastController, NavController } from '@ionic/angular';
@@ -21,7 +21,8 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     public nfc: NFC,
     public ndef: Ndef,
     private toastController: ToastController,
-    private navigation: NavController
+    private navigation: NavController,
+    private zone: NgZone
   ) {
     if (!this.shamir.readMode) {
       this.shamir.generateShards();
@@ -71,7 +72,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     }
 
     this.NFCisBusy = true;
-    this.shardsCounter++;
+    this.zone.run(() => this.shardsCounter++);
 
     const payload = data.tag.ndefMessage[0].payload;
     const tagContent = this.nfc.bytesToString(payload).substring(3);
@@ -98,9 +99,9 @@ export class ManageCardsPage implements OnInit, OnDestroy {
 
     try {
       await this.nfc.write([record]);
-      await this.nfc.makeReadOnly();
+      // await this.nfc.makeReadOnly();
 
-      this.shardsCounter++;
+      this.zone.run(() => this.shardsCounter++);
 
       if (this.shardsCounter === this.shamir.getShards().length) {
         this.navigation.navigateForward(['/finish']);
