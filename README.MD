@@ -7,6 +7,12 @@
 Welcome to Shamirs Wallet and its repository! 
 Please be free to send us bugs, help us with coding or just look around.
 
+## Description
+
+Shamirs Wallet is an ionic and angular based application. We are using <a href="https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing" target="_blank">`Shamirs Secret Sharing`</a> algorithm to split your BIP39 mnemonic password into pieces. 
+
+> Shamir's Secret Sharing is used to secure a secret in a distributed way, most often to secure other encryption keys. The secret is split into multiple parts, called shares. These shares are used to reconstruct the original secret.
+
 ## FAQ
 
 - **<a href="https://shamirswallet.com/blogs/news/wie-funktioniert-es" target="_blank">How does it work?</a>**
@@ -17,5 +23,9 @@ Please be free to send us bugs, help us with coding or just look around.
 
 Here's how you can reach us:
 
-- Website at <a href="https://shamirswallet.com/" target="_blank">`shamirswallet.com`</a>
+- Website at <a href="https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing" target="_blank">`shamirswallet.com`</a>
 - Contact at <a href="mailto:info@shamirswallet.com" target="_blank">`info@shamirswallet.com`</a>
+
+## License
+
+- <a href="https://github.com/Shamirs-Wallet/shamirs-wallet/blob/master/LICENSE" target="_blank">MIT</a>
