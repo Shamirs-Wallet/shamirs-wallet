@@ -3,11 +3,15 @@ import { NFC, Ndef, NdefEvent } from '@ionic-native/nfc/ngx';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { ToastController, NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { fadeOver } from 'src/app/animations/animations';
 
 @Component({
   selector: 'app-manage-cards',
   templateUrl: './manage-cards.page.html',
   styleUrls: ['./manage-cards.page.scss'],
+  animations: [
+    fadeOver
+  ]
 })
 export class ManageCardsPage implements OnInit, OnDestroy {
   private NdefListenerSubscription: Subscription;
