@@ -13,8 +13,6 @@ Please be free to send us bugs, help us with coding or just look around.
 - **<a href="https://shamirswallet.com/blogs/news/wozu-brauchst-du-shamirs-karten" target="_blank">Why do I need Shamirs Cards?</a>**
 - **<a href="https://shamirswallet.com/blogs/news/wie-schutzen-plastikkarten-meinen-digitalen-geldbeutel" target="_blank">How do cards secure my digital wallet?</a>**
 
----
-
 ## Support
 
 Here's how you can reach us:
