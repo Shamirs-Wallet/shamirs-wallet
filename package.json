@@ -1,8 +1,9 @@
 {
   "name": "shamirs-wallet",
-  "version": "0.0.1",
-  "author": "Mathias Schütz <info@mathiasschuetz.com>",
-  "homepage": "https://www.mathiasschuetz.com/",
+  "version": "1.0.0",
+  "author": "Mathias Schütz <info@shamirswallet.com>",
+  "homepage": "https://shamirswallet.com/",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ionic serve",
