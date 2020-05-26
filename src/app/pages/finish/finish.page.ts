@@ -16,7 +16,7 @@ export class FinishPage {
 
   constructor(
     private navigation: NavController,
-    private shamir: ShamirService
+    public shamir: ShamirService
   ) { }
 
   backToHome() {
