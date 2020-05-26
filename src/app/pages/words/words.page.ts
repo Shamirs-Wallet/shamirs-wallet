@@ -13,12 +13,13 @@ export class WordsPage implements OnInit {
   constructor(
     private navigation: NavController,
     private shamir: ShamirService
-  ) { }
+  ) { 
+  }
 
   ngOnInit() {
     for (let index = 0; index < this.shamir.wordCount; index++) {
-      // this.words.push('');
-      this.words.push('TEST'); // ! TEST ONLY
+      this.words.push('');
+      // this.words.push('TEST'); // ! TEST ONLY
     }
   }
 
@@ -29,7 +30,9 @@ export class WordsPage implements OnInit {
       }
     }
 
-    this.shamir.words = this.words;
+    let words = this.words;
+    words = words.map(f => f.trim()); // trim whitespaces
+    this.shamir.words = words;
 
     this.navigation.navigateForward(['/manage-cards']);
   }
