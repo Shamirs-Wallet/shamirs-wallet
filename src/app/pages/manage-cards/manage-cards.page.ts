@@ -58,7 +58,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
         const buttonText = await this.translate.get('pages.manage-cards.toasts.tryAgainButton').toPromise();
         const toast = await this.toastController.create({
           message,
-          duration: 20000,
+          duration: 10000,
           buttons: [
             {
               text: buttonText,
