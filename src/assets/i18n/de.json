@@ -54,7 +54,12 @@
         "subtitle": "Halte jetzt deine Karten nacheinander an die Rückseite deines Handys"
       },
       "card": "Karte",
-      "of": "von"
+      "of": "von",
+      "toasts": {
+        "tryAgain": "Versuch es noch einmal",
+        "tryAgainButton": "Nochmal versuchen",
+        "nfcNotAvailable": "Auf dein NFC-Modul konnte nicht zugegriffen werden. Ist es aktiviert?"
+      }
     },
     "finish": {
       "read-mode": {

@@ -1,0 +1,77 @@
+{
+  "pages": {
+    "home": {
+      "title": "Shamirs Wallet",
+      "subtitle": "Ready to secure your wallet?",
+      "create": "Create cards",
+      "read": "Recreate Mnemonic Password"
+    },
+    "select-word-length": {
+      "title": "Word count",
+      "subtitle": "How many words contains your mnemonic phrase?",
+      "form": {
+        "label": "Words",
+        "dialog": {
+          "ok": "Select",
+          "cancel": "Close",
+          "placeholder": "Selection"
+        },
+        "submit": "Next"
+      }
+    },
+    "combination": {
+      "title": "Shamirs combination",
+      "subtitle": "How many cards does it need to recreate your mnemonic phrase?",
+      "form": {
+        "label": "Combination",
+        "dialog": {
+          "ok": "Select",
+          "cancel": "Close",
+          "placeholder": "Selection",
+          "options": {
+            "option1": "3 of 5 cards",
+            "option2": "5 of 10 cards"
+          }
+        },
+        "submit": "Next"
+      }
+    },
+    "words": {
+      "title": "Mnemonic Words",
+      "subtitle": "Type in your mnemonic words",
+      "form": {
+        "word": "Word",
+        "submit": "Next"
+      }
+    },
+    "manage-cards": {
+      "write-mode": {
+        "title": "Create cards",
+        "subtitle": "Now hold your cards one by one at your phones backside"
+      },
+      "read-mode": {
+        "title": "Combine cards",
+        "subtitle": "Now hold your cards one by one at your phones backside"
+      },
+      "card": "Card",
+      "of": "of",
+      "toasts": {
+        "tryAgain": "Try again",
+        "tryAgainButton": "Try again",
+        "nfcNotAvailable": "Can't access your NFC-Module. Is it activated?"
+      }
+    },
+    "finish": {
+      "read-mode": {
+        "title": "That's it!",
+        "subtitle": "Your cards got combined! Below you can find your mnemonic phrase"
+      },
+      "write-mode": {
+        "title": "That's it!",
+        "subtitle": "Your cards got created!",
+        "information": "Now you should hide your cards at different places. \nThe further you hide your cards to each other \nthe more secure your mnemonic phrase will be."
+      },
+      "back-button": "Back to home"
+    }
+  }
+}

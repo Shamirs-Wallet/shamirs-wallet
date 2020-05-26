@@ -4,6 +4,7 @@ import { ShamirService } from 'src/app/services/shamir.service';
 import { ToastController, NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { fadeOver } from 'src/app/animations/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-manage-cards',
@@ -26,7 +27,8 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     public ndef: Ndef,
     private toastController: ToastController,
     private navigation: NavController,
-    private zone: NgZone
+    private zone: NgZone,
+    private translate: TranslateService
   ) {
     if (!this.shamir.readMode) {
       this.shamir.generateShards();
@@ -52,12 +54,14 @@ export class ManageCardsPage implements OnInit, OnDestroy {
       }, async err => {
         console.error(err);
 
+        const message = await this.translate.get('pages.manage-cards.toasts.nfcNotAvailable').toPromise();
+        const buttonText = await this.translate.get('pages.manage-cards.toasts.tryAgainButton').toPromise();
         const toast = await this.toastController.create({
-          message: 'Auf dein NFC-Modul konnte nicht zugegriffen werden. Ist es aktiviert?',
+          message,
           duration: 20000,
           buttons: [
             {
-              text: 'Nochmal versuchen',
+              text: buttonText,
               role: 'cancel',
               icon: 'refresh-outline',
               handler: () => {
@@ -113,8 +117,9 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     } catch (error) {
       console.error(error);
 
+      const message = await this.translate.get('pages.manage-cards.toasts.tryAgain').toPromise();
       const toast = await this.toastController.create({
-        message: 'Versuch es noch einmal',
+        message,
         duration: 3000
       });
       await toast.present();
