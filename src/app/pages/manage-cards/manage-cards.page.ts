@@ -22,7 +22,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
   shardsCounter = 0;
 
   constructor(
-    private shamir: ShamirService,
+    public shamir: ShamirService,
     public nfc: NFC,
     public ndef: Ndef,
     private toastController: ToastController,
