@@ -22,10 +22,16 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.splashScreen.hide();
       this.statusBar.styleLightContent();
       this.statusBar.backgroundColorByHexString('#3B386F');
-      this.splashScreen.hide();
-      this.translate.setDefaultLang('de');
+      this.translate.setDefaultLang('en');
+
+      if ((window as any).Intl && typeof (window as any).Intl === 'object') {
+        console.log('API available');
+        console.log(navigator.language);
+        this.translate.use(navigator.language.slice(0, 2));
+      }
     });
   }
 }
