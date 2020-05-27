@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,11 +25,23 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@font-face {
+  font-family: Nunito_Sans;
+  font-weight: 400;
+  src: url(assets/fonts/Nunito_Sans/NunitoSans-Regular.ttf) format("truetype");
+}
+
 :root {
-  --ion-color-secondary: #3B386F;
-  --ion-color-secondary-rgb: 0,102,0;
+  --ion-color-secondary: #3b386f;
+  --ion-color-secondary-rgb: 0, 102, 0;
   --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255,255,255;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
   --ion-color-secondary-shade: #005a00;
   --ion-color-secondary-tint: #1a751a;
+}
+
+* {
+  font-family: 'Nunito_Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
 }
