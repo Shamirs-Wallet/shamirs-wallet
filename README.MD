@@ -23,7 +23,7 @@ Shamirs Wallet is an ionic and angular based application. We are using <a href="
 
 Here's how you can reach us:
 
-- Website at <a href="https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing" target="_blank">`shamirswallet.com`</a>
+- Website at <a href="https://shamirswallet.com/" target="_blank">`shamirswallet.com`</a>
 - Contact at <a href="mailto:info@shamirswallet.com" target="_blank">`info@shamirswallet.com`</a>
 
 ## License
