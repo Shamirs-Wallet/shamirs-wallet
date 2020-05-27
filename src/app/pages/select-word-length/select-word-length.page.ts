@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { NavController } from '@ionic/angular';
+import { fadeIn } from 'src/app/animations/animations';
 
 @Component({
   selector: 'app-select-word-length',
   templateUrl: './select-word-length.page.html',
   styleUrls: ['./select-word-length.page.scss'],
+  animations: [
+    fadeIn
+  ]
 })
 export class SelectWordLengthPage {
   wordLength = 24;
