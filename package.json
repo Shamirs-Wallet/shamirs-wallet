@@ -12,7 +12,7 @@
     "device": "ionic cordova run android --device",
     "device:prod": "ionic cordova run --prod android --device",
     "debug": "ionic cordova run android --device -l --debug",
-    "apk": "ionic cordova build android --prod --release --stacktrace & jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk my-alias & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\zipalign.exe\" -v 4 platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk enaio-up.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\apksigner.bat\" verify enaio-up.apk"
+    "apk": "ionic cordova build android --prod --release --stacktrace & jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\zipalign.exe\" -v 4 platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\apksigner.bat\" verify shamirswallet.apk"
   },
   "private": true,
   "dependencies": {
