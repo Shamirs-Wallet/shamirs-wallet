@@ -18,6 +18,7 @@ Shamirs Wallet is an ionic and angular based application. We are using <a href="
 - **<a href="https://shamirswallet.com/blogs/news/wie-funktioniert-es" target="_blank">How does it work?</a>**
 - **<a href="https://shamirswallet.com/blogs/news/wozu-brauchst-du-shamirs-karten" target="_blank">Why do I need Shamirs Cards?</a>**
 - **<a href="https://shamirswallet.com/blogs/news/wie-schutzen-plastikkarten-meinen-digitalen-geldbeutel" target="_blank">How do cards secure my digital wallet?</a>**
+- **<a href="https://shamirswallet.com/blogs/news/was-ist-shamirs-secret-sharing" target="_blank">What is Shamirs Secret Sharing?</a>**
 
 ## Support
 
