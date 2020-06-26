@@ -4,7 +4,8 @@
       "title": "Shamirs Wallet",
       "subtitle": "Ready to secure your wallet?",
       "create": "Create cards",
-      "read": "Recreate Mnemonic Password"
+      "read": "Recreate Mnemonic Password",
+      "buybutton": "Buy cards"
     },
     "select-word-length": {
       "title": "Word count",
