@@ -4,7 +4,8 @@
       "title": "Shamirs Wallet",
       "subtitle": "Bereit dein Wallet zu sichern?",
       "create": "Karten erstellen",
-      "read": "Mnemonic wiederherstellen"
+      "read": "Mnemonic wiederherstellen",
+      "buybutton": "Karten kaufen"
     },
     "select-word-length": {
       "title": "Wortlänge",
