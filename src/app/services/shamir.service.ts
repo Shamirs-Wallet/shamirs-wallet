@@ -14,6 +14,7 @@ export class ShamirService {
   words: string[];
   shares: number;
   threshold: number;
+  setReadonly: boolean;
 
   initialize() {
     this.shards = new Array<Buffer>();
@@ -23,6 +24,7 @@ export class ShamirService {
     this.words = undefined;
     this.shares = undefined;
     this.threshold = undefined;
+    this.setReadonly = false;
   }
 
   generateShards() {
