@@ -43,12 +43,7 @@ export class HomePage implements OnInit, OnDestroy {
 
   start(readMode: boolean) {
     this.shamir.readMode = readMode;
-
-    if (readMode) {
-      this.navigation.navigateForward(['/combination']);
-    } else {
-      this.navigation.navigateForward(['/select-word-length']);
-    }
+    this.navigation.navigateForward(['/information']);
   }
 
   watchInternetConnection() {

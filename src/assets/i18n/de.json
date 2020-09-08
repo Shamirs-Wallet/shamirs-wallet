@@ -13,10 +13,10 @@
       }
     },
     "information": {
-      "title": "Für immer schreibgeschützt",
-      "subtitle": "Willst du auf deinen Karten den Schreibschutz aktivieren?\nDas kann nicht mehr rückgängig gemacht werden.",
+      "title": "Risiken minimieren",
+      "subtitle": "Um mögliche Risiken zu minimieren, empfehlen wir dir, das du dich vom Internet trennst, indem du mobile Daten und dein WLAN abschaltest. Deinstalliere bitte alle Apps, die ein Sicherheitsrisiko darstellen. Es gibt Apps, die ein Foto oder Video von deinem Bildschirm machen können. Shamirs Wallet verbindet sich nicht mit dem Internet, macht keine Fotos oder Videos und braucht auch keine weiteren Apps, um zu funktionieren.",
       "form": {
-        "label": "Schreibschutz aktivieren",
+        "label": "Ich bin mir der Risiken bewusst",
         "submit": "Weiter"
       }
     },
@@ -55,6 +55,14 @@
       "subtitle": "Tipp jetzt deine BIP39 Wörter ein",
       "form": {
         "word": "Wort",
+        "submit": "Weiter"
+      }
+    },
+    "readonly": {
+      "title": "Für immer schreibgeschützt",
+      "subtitle": "Willst du auf deinen Karten den Schreibschutz aktivieren?\nDas kann nicht mehr rückgängig gemacht werden.",
+      "form": {
+        "label": "Schreibschutz aktivieren",
         "submit": "Weiter"
       }
     },
