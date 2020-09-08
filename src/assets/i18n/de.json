@@ -5,7 +5,12 @@
       "subtitle": "Bereit dein Wallet zu sichern?",
       "create": "Karten erstellen",
       "read": "Mnemonic wiederherstellen",
-      "buybutton": "Karten kaufen"
+      "buybutton": "Karten kaufen",
+      "connection": {
+        "title": "Internetverbindung gefunden",
+        "subtitle": "Deaktivieren um fortzufahren",
+        "message": "Wir haben eine Verbindung zum Internet gefunden.\nBitte schalte die Verbindung ab, um mit Shamirs Wallet fortzufahren."
+      }
     },
     "select-word-length": {
       "title": "Wortlänge",
