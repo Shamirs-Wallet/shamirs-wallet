@@ -13,10 +13,10 @@
       }
     },
     "information": {
-      "title": "Forever readonly",
-      "subtitle": "Do you want to set your cards to readonly?\nThis can't be undo.",
+      "title": "Minimize risks",
+      "subtitle": "To minimize possible risks, we recommend that you disconnect from the Internet by turning off mobile data and your WLAN. Please uninstall all apps that pose a security risk. There are apps that can take a photo or video of your screen. Shamir's Wallet does not connect to the Internet, does not take photos or videos and does not need any other apps to work.",
       "form": {
-        "checkbox": "Set cards to readonly",
+        "label": "I am aware of the risks",
         "submit": "Next"
       }
     },
@@ -55,6 +55,14 @@
       "subtitle": "Type in your mnemonic words",
       "form": {
         "word": "Word",
+        "submit": "Next"
+      }
+    },
+    "readonly": {
+      "title": "Forever readonly",
+      "subtitle": "Do you want to set your cards to readonly?\nThis can't be undo.",
+      "form": {
+        "label": "Set cards to readonly",
         "submit": "Next"
       }
     },

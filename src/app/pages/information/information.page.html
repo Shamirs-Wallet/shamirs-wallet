@@ -1,9 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>information</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <div id="title">
+      <strong translate>pages.information.title</strong>
+      <p translate>pages.information.subtitle</p>
+    </div>
 
-<ion-content>
+    <form (ngSubmit)="save()">
+      <ion-item>
+        <ion-checkbox color="primary" checked slot="start" [(ngModel)]="accepted" name="readonly"></ion-checkbox>
+        <ion-label translate>pages.information.form.label</ion-label>
+      </ion-item>
 
+      <ion-button expand="full" color="secondary" type="submit" [disabled]="!accepted" translate>pages.information.form.submit</ion-button>
+    </form>
+  </div>
 </ion-content>
