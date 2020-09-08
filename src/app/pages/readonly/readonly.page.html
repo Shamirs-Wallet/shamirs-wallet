@@ -1,0 +1,18 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <div id="title">
+      <img src="assets/images/crystal_pieces.png" />
+      <strong translate>pages.information.title</strong>
+      <p translate>pages.information.subtitle</p>
+    </div>
+
+    <form (ngSubmit)="save()">
+      <ion-item>
+        <ion-checkbox color="primary" checked slot="start" [(ngModel)]="setReadonly" name="readonly"></ion-checkbox>
+        <ion-label translate>pages.information.form.label</ion-label>
+      </ion-item>
+
+      <ion-button expand="full" color="secondary" type="submit" translate>pages.combination.form.submit</ion-button>
+    </form>
+  </div>
+</ion-content>

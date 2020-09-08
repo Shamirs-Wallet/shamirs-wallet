@@ -34,6 +34,7 @@ export class ShamirService {
       console.log('words ', this.words);
       console.log('shares ', this.shares);
       console.log('threshold ', this.threshold);
+      console.log('setReadonly ', this.setReadonly);
     }
 
     const secret = Buffer.from(this.words.join(' '), 'utf8');

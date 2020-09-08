@@ -39,6 +39,6 @@ export class WordsPage implements OnInit {
     words = words.map(f => ({ index: f.index, value: f.value.trim() })); // trim whitespaces
     this.shamir.words = words.map(f => f.value);
 
-    this.navigation.navigateForward(['/manage-cards']);
+    this.navigation.navigateForward(['/readonly']);
   }
 }

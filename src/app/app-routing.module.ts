@@ -25,7 +25,15 @@ const routes: Routes = [
   {
     path: 'combination',
     loadChildren: () => import('./pages/combination/combination.module').then( m => m.CombinationPageModule)
+  },  {
+    path: 'readonly',
+    loadChildren: () => import('./pages/readonly/readonly.module').then( m => m.ReadonlyPageModule)
   },
+  {
+    path: 'information',
+    loadChildren: () => import('./pages/information/information.module').then( m => m.InformationPageModule)
+  },
+
 
 ];
 

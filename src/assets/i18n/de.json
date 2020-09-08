@@ -12,6 +12,14 @@
         "message": "Wir haben eine Verbindung zum Internet gefunden.\nBitte schalte die Verbindung ab, um mit Shamirs Wallet fortzufahren."
       }
     },
+    "information": {
+      "title": "Für immer schreibgeschützt",
+      "subtitle": "Willst du auf deinen Karten den Schreibschutz aktivieren?\nDas kann nicht mehr rückgängig gemacht werden.",
+      "form": {
+        "label": "Schreibschutz aktivieren",
+        "submit": "Weiter"
+      }
+    },
     "select-word-length": {
       "title": "Wortlänge",
       "subtitle": "Wie viele Wörter hat dein BIP39 Passwort?",
