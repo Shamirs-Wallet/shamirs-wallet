@@ -12,6 +12,14 @@
         "message": "We found a internet connection.\nPlease disconnect from internet to start with Shamirs Wallet."
       }
     },
+    "information": {
+      "title": "Forever readonly",
+      "subtitle": "Do you want to set your cards to readonly?\nThis can't be undo.",
+      "form": {
+        "checkbox": "Set cards to readonly",
+        "submit": "Next"
+      }
+    },
     "select-word-length": {
       "title": "Word count",
       "subtitle": "How many words contains your mnemonic phrase?",
