@@ -5,7 +5,12 @@
       "subtitle": "Ready to secure your wallet?",
       "create": "Create cards",
       "read": "Recreate Mnemonic Password",
-      "buybutton": "Buy cards"
+      "buybutton": "Buy cards",
+      "connection": {
+        "title": "Internet connection found",
+        "subtitle": "Please disconnect from Internet",
+        "message": "We found a internet connection.\nPlease disconnect from internet to start with Shamirs Wallet."
+      }
     },
     "select-word-length": {
       "title": "Word count",

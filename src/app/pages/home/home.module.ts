@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ]),
     TranslateModule.forChild()
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  providers: [Network]
 })
-export class HomePageModule {}
+export class HomePageModule { }
