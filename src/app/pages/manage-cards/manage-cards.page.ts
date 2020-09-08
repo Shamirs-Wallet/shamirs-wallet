@@ -19,6 +19,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
   private NFCisBusy: boolean;
 
   readMode = this.shamir.readMode;
+  setReadonly = this.shamir.setReadonly;
   shardsCounter = 0;
 
   constructor(
@@ -107,7 +108,10 @@ export class ManageCardsPage implements OnInit, OnDestroy {
 
     try {
       await this.nfc.write([record]);
-      // await this.nfc.makeReadOnly();
+
+      if (this.setReadonly) {
+        await this.nfc.makeReadOnly();
+      }
 
       this.zone.run(() => this.shardsCounter++);
 
