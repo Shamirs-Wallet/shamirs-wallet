@@ -1,6 +1,6 @@
 {
   "name": "shamirs-wallet",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "author": "Mathias Schütz <info@shamirswallet.com>",
   "homepage": "https://shamirswallet.com/",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "device": "ionic cordova run android --device",
     "device:prod": "ionic cordova run --prod android --device",
     "debug": "ionic cordova run android --device -l --debug",
-    "apk": "ionic cordova build android --prod --release --stacktrace & jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\zipalign.exe\" -v 4 platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\apksigner.bat\" verify shamirswallet.apk"
+    "apk": "ionic cordova build android --prod --release --stacktrace & jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet & del shamirswallet.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\zipalign.exe\" -v 4 platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\apksigner.bat\" verify shamirswallet.apk"
   },
   "private": true,
   "dependencies": {
