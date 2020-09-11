@@ -1,16 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, AfterViewInit } from '@angular/core';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { NavController, AlertController } from '@ionic/angular';
-import { Network } from '@ionic-native/network/ngx';
 import { Subscription } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
+export class HomePage implements AfterViewInit, OnDestroy {
   internetConnected: Subscription;
 
   alertInternetConnection: HTMLIonAlertElement;
@@ -18,21 +16,17 @@ export class HomePage implements OnInit, OnDestroy {
   constructor(
     private navigation: NavController,
     private shamir: ShamirService,
-    private network: Network,
+    // private network: Network,
     public alertController: AlertController,
-    private translate: TranslateService
+    // private translate: TranslateService
   ) { }
 
-  async ngOnInit(): Promise<void> {
-    await this.watchInternetConnection();
+  async ngAfterViewInit(): Promise<void> {
+    // await this.watchInternetConnection();
   }
 
   async ionViewDidEnter() {
     this.shamir.initialize();
-
-    if (this.network.type !== 'none') {
-      this.showAlertInternetConnectionFound();
-    }
   }
 
   ngOnDestroy(): void {
@@ -42,37 +36,47 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   start(readMode: boolean) {
+    // if (this.network.type !== 'none') {
+    //   this.showAlertInternetConnectionFound();
+    //   return;
+    // }
+
     this.shamir.readMode = readMode;
     this.navigation.navigateForward(['/information']);
   }
 
-  watchInternetConnection() {
-    // watch network for a disconnection
-    this.internetConnected = this.network.onDisconnect().subscribe(async () => {
-      if (this.alertInternetConnection !== undefined) {
-        await this.alertInternetConnection.dismiss();
-      }
-    });
+  // watchInternetConnection() {
+  //   // watch network for a disconnection
+  //   this.internetConnected = this.network.onDisconnect().subscribe(async () => {
+  //     if (this.alertInternetConnection !== undefined) {
+  //       await this.alertInternetConnection.dismiss();
+  //     }
+  //   });
 
-    // watch network for a connection
-    this.internetConnected = this.network.onConnect().subscribe(async () => {
-      setTimeout(async () => await this.showAlertInternetConnectionFound(), 2000);
-    });
-  }
+  //   // watch network for a connection
+  //   this.internetConnected = this.network.onConnect().subscribe(async () => {
+  //     setTimeout(async () => await this.showAlertInternetConnectionFound(), 2000);
+  //   });
+  // }
 
-  async showAlertInternetConnectionFound() {
-    this.alertInternetConnection = await this.alertController.create({
-      header: await this.translate.get('pages.home.connection.title').toPromise(),
-      subHeader: await this.translate.get('pages.home.connection.subtitle').toPromise(),
-      message: await this.translate.get('pages.home.connection.message').toPromise(),
-      buttons: []
-    });
+  // async showAlertInternetConnectionFound() {
+  //   if (this.alertInternetConnection !== undefined) {
+  //     this.alertInternetConnection.dismiss();
+  //     this.alertInternetConnection = undefined;
+  //   }
 
-    await this.alertInternetConnection.present();
-    await this.alertInternetConnection.onDidDismiss();
+  //   this.alertInternetConnection = await this.alertController.create({
+  //     header: await this.translate.get('pages.home.connection.title').toPromise(),
+  //     subHeader: await this.translate.get('pages.home.connection.subtitle').toPromise(),
+  //     message: await this.translate.get('pages.home.connection.message').toPromise(),
+  //     buttons: []
+  //   });
 
-    if (this.network.type !== 'none') {
-      this.showAlertInternetConnectionFound();
-    }
-  }
+  //   await this.alertInternetConnection.present();
+  //   await this.alertInternetConnection.onDidDismiss();
+
+  //   if (this.network.type !== 'none') {
+  //     this.showAlertInternetConnectionFound();
+  //   }
+  // }
 }
