@@ -79,7 +79,7 @@
       "of": "von",
       "toasts": {
         "tryAgain": "Versuch es noch einmal",
-        "tryAgainButton": "Nochmal versuchen",
+        "tryAgainButton": "Nochmal",
         "nfcNotAvailable": "Auf dein NFC-Modul konnte nicht zugegriffen werden. Ist es aktiviert?"
       }
     },
@@ -93,7 +93,11 @@
         "subtitle": "Deine Scherben wurden erstellt!",
         "information": "Du solltest nun deine Scherben an unterschiedlichen Orten aufbewahren. \nJe weiter die Scherben voneinander entfernt sind desto besser.\nNur du solltest die Standorte deiner Scherben kennen. Damit\nbietet dir Shamirs Wallet maximale Sicherheit."
       },
-      "back-button": "Zurück zur Startseite"
+      "back-button": "Zurück zur Startseite",
+      "rating": {
+        "message": "Bewerte Shamirs Wallet",
+        "rate-button": "Bewerten"
+      }
     }
   }
 }

@@ -93,7 +93,11 @@
         "subtitle": "Your cards got created!",
         "information": "Now you should hide your cards at different places. \nThe further you hide your cards to each other \nthe more secure your mnemonic phrase will be."
       },
-      "back-button": "Back to home"
+      "back-button": "Back to home",
+      "rating": {
+        "message": "Rate Shamirs Wallet",
+        "rate-button": "Rate"
+      }
     }
   }
 }
