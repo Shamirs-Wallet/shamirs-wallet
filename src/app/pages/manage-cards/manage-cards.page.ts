@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone, AfterViewInit } from '@angular/core';
 import { NFC, Ndef, NdefEvent } from '@ionic-native/nfc/ngx';
 import { ShamirService } from 'src/app/services/shamir.service';
 import { ToastController, NavController } from '@ionic/angular';
@@ -14,7 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
     fadeOver
   ]
 })
-export class ManageCardsPage implements OnInit, OnDestroy {
+export class ManageCardsPage implements AfterViewInit, OnDestroy {
   private NdefListenerSubscription: Subscription;
   private NFCisBusy: boolean;
 
@@ -36,7 +36,7 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.attachToNFC();
   }
 
@@ -44,43 +44,67 @@ export class ManageCardsPage implements OnInit, OnDestroy {
     this.NdefListenerSubscription.unsubscribe();
   }
 
-  attachToNFC() {
+  async attachToNFC() {
+    if (await this.nfcIsAvailable() === false) {
+      return;
+    }
+
     this.NdefListenerSubscription = this.nfc.addNdefListener()
       .subscribe(async (data: NdefEvent) => {
+        if (this.NFCisBusy || this.shardsCounter >= this.shamir.shares) {
+          return;
+        }
+
+        this.NFCisBusy = true;
+
         if (this.readMode) {
           this.readTag(data);
         } else {
           await this.writeTag();
         }
+
+        this.NFCisBusy = false;
       }, async err => {
         console.error(err);
-
-        const message = await this.translate.get('pages.manage-cards.toasts.nfcNotAvailable').toPromise();
-        const buttonText = await this.translate.get('pages.manage-cards.toasts.tryAgainButton').toPromise();
-        const toast = await this.toastController.create({
-          message,
-          duration: 10000,
-          buttons: [
-            {
-              text: buttonText,
-              role: 'cancel',
-              icon: 'refresh-outline',
-              handler: () => {
-                this.attachToNFC();
-              }
-            }
-          ]
-        });
-        await toast.present();
+        await this.nfcAttachmentFailed();
       });
   }
 
-  readTag(data: NdefEvent) {
-    if (this.NFCisBusy || this.shardsCounter >= this.shamir.threshold) {
-      return;
+  async nfcIsAvailable() {
+    try {
+      const nfcEnabled = await this.nfc.enabled();
+      if (nfcEnabled === false) {
+        await this.nfcAttachmentFailed();
+        return false;
+      }
+    } catch (error) {
+      console.error(error);
+      await this.nfcAttachmentFailed();
+      return false;
     }
 
-    this.NFCisBusy = true;
+    return true;
+  }
+
+  async nfcAttachmentFailed() {
+    const toast = await this.toastController.create({
+      message: await this.translate.get('pages.manage-cards.toasts.nfcNotAvailable').toPromise(),
+      duration: -1,
+      buttons: [
+        {
+          text: await this.translate.get('pages.manage-cards.toasts.tryAgainButton').toPromise(),
+          role: 'cancel',
+          icon: 'refresh-outline',
+          handler: () => {
+            this.attachToNFC();
+          }
+        }
+      ]
+    });
+    await toast.present();
+  }
+
+  readTag(data: NdefEvent) {
     this.zone.run(() => this.shardsCounter++);
 
     const payload = data.tag.ndefMessage[0].payload;
@@ -88,20 +112,12 @@ export class ManageCardsPage implements OnInit, OnDestroy {
 
     this.shamir.addShard(Buffer.from(tagContent, 'base64'));
 
-    this.NFCisBusy = false;
-
     if (this.shardsCounter === this.shamir.threshold) {
       this.navigation.navigateForward(['/finish']);
     }
   }
 
   async writeTag() {
-    if (this.NFCisBusy || this.shardsCounter >= this.shamir.shares) {
-      return;
-    }
-
-    this.NFCisBusy = true;
-
     const shard = this.shamir.getShards()[this.shardsCounter];
     const base64encoded = shard.toString('base64');
     const record = this.ndef.textRecord(base64encoded);
@@ -128,7 +144,5 @@ export class ManageCardsPage implements OnInit, OnDestroy {
       });
       await toast.present();
     }
-
-    this.NFCisBusy = false;
   }
 }
