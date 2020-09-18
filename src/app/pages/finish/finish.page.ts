@@ -34,6 +34,7 @@ export class FinishPage implements OnInit {
   async openRateAppToast() {
     const toast = await this.toastController.create({
       message: await this.translate.get('pages.finish.rating.message').toPromise(),
+      color: 'primary',
       buttons: [
         {
           side: 'end',
