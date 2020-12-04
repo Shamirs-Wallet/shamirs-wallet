@@ -43,7 +43,7 @@ export class FinishPage implements OnInit {
             if (this.platform.is('ios')) {
               // TODO
             } else if (this.platform.is('android')) {
-              window.open('https://play.google.com/store/apps/details?id=ms.shamirswallet.app');
+              window.open('https://play.google.com/store/apps/details?id=ms.shamirswallet.app', '_system', 'location=no');
             }
           }
         }, {
