@@ -4,13 +4,9 @@
     <description>Blockchain is decentral. Your wallet should be too.</description>
     <author email="info@shamirswallet.com" href="https://shamirswallet.com/">Mathias Schütz at Shamirs Wallet</author>
     <content src="index.html" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
+    <access origin="localhost" />
+    <allow-intent href="https://shamirswallet.com/*" />
+    <allow-intent href="https://play.google.com/store/apps/details?id=ms.shamirswallet.app" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="29" />

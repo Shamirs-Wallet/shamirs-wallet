@@ -7,12 +7,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ionic serve",
-    "build": "ionic cordova build android",
-    "build:prod": "ionic cordova build android --prod --release --stacktrace",
-    "device": "ionic cordova run android --device",
-    "device:prod": "ionic cordova run --prod android --device",
-    "debug": "ionic cordova run android --device -l --debug",
-    "apk": "ionic cordova build android --prod --release --stacktrace & jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet & del shamirswallet.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\zipalign.exe\" -v 4 platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\apksigner.bat\" verify shamirswallet.apk"
+    "build:ios": "ionic cordova prepare ios & echo 'After completed open XCode (not BETA!) on your macOS and run on your emulator or archive for -Any iOS Device (arm64)-'",
+    "build:android": "ionic cordova build android --prod --release --stacktrace",
+    "res": "ionic cordova resources",
+    "res:android": "ionic cordova resources android",
+    "res:ios": "ionic cordova resources ios",
+    "android:device": "ionic cordova run android --device",
+    "android:device:prod": "ionic cordova run --prod android --device",
+    "android:release": "ionic cordova build android --prod --release --stacktrace & jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet & del shamirswallet.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\zipalign.exe\" -v 4 platforms\\android\\app\\build\\outputs\\apk\\release\\app-release-unsigned.apk shamirswallet.apk & \"C:\\Entwicklung\\ANDROIDSDK\\build-tools\\29.0.2\\apksigner.bat\" verify shamirswallet.apk"
   },
   "private": true,
   "dependencies": {
@@ -34,7 +36,6 @@
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
     "cordova-android": "8.1.0",
-    "cordova-plugin-network-information": "^2.0.2",
     "core-js": "^2.5.4",
     "phonegap-nfc": "^1.2.0",
     "requirejs": "^2.3.6",
@@ -83,8 +84,7 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "phonegap-nfc": {},
-      "cordova-plugin-network-information": {}
+      "phonegap-nfc": {}
     },
     "platforms": [
       "android"
