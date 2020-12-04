@@ -14,7 +14,7 @@
     },
     "information": {
       "title": "Risiken minimieren",
-      "subtitle": "Um mögliche Risiken zu minimieren, empfehlen wir dir, das du dich vom Internet trennst, indem du mobile Daten und dein WLAN abschaltest. Deinstalliere bitte alle Apps, die ein Sicherheitsrisiko darstellen. Es gibt Apps, die ein Foto oder Video von deinem Bildschirm machen können. Shamirs Wallet verbindet sich nicht mit dem Internet, macht keine Fotos oder Videos und braucht auch keine weiteren Apps, um zu funktionieren.",
+      "subtitle": "Shamirs Wallet App ist optimal vor Angriffen geschützt. Perfekte Sicherheit bietet aber keine Software. Um weitere Risiken zu minimieren, empfehlen wir dir deshalb, das du dich vom Internet trennst, indem du mobile Daten und dein WLAN abschaltest. Deinstalliere bitte alle Apps, die ein Sicherheitsrisiko darstellen. Es gibt Apps, die ein Foto oder Video von deinem Bildschirm machen können. Shamirs Wallet verbindet sich nicht mit dem Internet, macht keine Fotos oder Videos und braucht auch keine weiteren Apps, um zu funktionieren.",
       "form": {
         "label": "Ich bin mir der Risiken bewusst",
         "submit": "Weiter"
