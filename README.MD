@@ -1,4 +1,4 @@
-<a href="https://shamirswallet.com/"><img src="https://cdn.shopify.com/s/files/1/0377/0272/9866/files/schwarz-auf-transparent-hd2_200x.png?v=1589100466" title="FVCproductions" alt="FVCproductions"></a>
+<a href="https://shamirswallet.com/"><img src="https://github.com/Shamirs-Wallet/shamirs-wallet/blob/master/resources/logo.png?raw=true" title="Shamirs Wallet Logo" alt="Shamirs Wallet Logo"></a>
 
 # Shamirs Wallet - App
 
@@ -30,3 +30,5 @@ Here's how you can reach us:
 ## License
 
 - <a href="https://github.com/Shamirs-Wallet/shamirs-wallet/blob/master/LICENSE" target="_blank">MIT</a>
+
+<a href="https://shamirswallet.com/"><img src="https://github.com/Shamirs-Wallet/shamirs-wallet/blob/master/resources/logo.png?raw=true" title="Shamirs Wallet Cards" alt="Shamirs Wallet Cards"></a>
