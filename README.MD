@@ -1,3 +1,18 @@
+## Status
+
+This project is finished and no longer maintained. The app was published in the Google Play
+Store and the matching cards were available on Amazon. We stopped working on it in 2023 and
+archived the repository.
+
+The website shamirswallet.com is offline, so the links further down do not work anymore.
+They stay here because they are part of what this project was.
+
+The code is still here as a reference. It is an Ionic and Angular app, around 1,200 lines of
+TypeScript across 56 files. It splits a BIP39 mnemonic into shares using Shamir Secret
+Sharing, and those shares are meant to be written down on the physical cards.
+
+It did not fail on the technology. It failed on marketing.
+
 <a href="https://shamirswallet.com/"><img src="https://github.com/Shamirs-Wallet/shamirs-wallet/blob/master/resources/logo.png?raw=true" title="Shamirs Wallet Logo" alt="Shamirs Wallet Logo"></a>
 
 # Shamirs Wallet - App
