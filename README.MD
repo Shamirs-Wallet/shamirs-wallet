@@ -31,4 +31,4 @@ Here's how you can reach us:
 
 - <a href="https://github.com/Shamirs-Wallet/shamirs-wallet/blob/master/LICENSE" target="_blank">MIT</a>
 
-<a href="https://shamirswallet.com/"><img src="https://github.com/Shamirs-Wallet/shamirs-wallet/blob/master/resources/logo.png?raw=true" title="Shamirs Wallet Cards" alt="Shamirs Wallet Cards"></a>
+<a href="https://shamirswallet.com/"><img src="https://github.com/Shamirs-Wallet/shamirs-wallet/blob/master/resources/cards.jpg?raw=true" title="Shamirs Wallet Cards" alt="Shamirs Wallet Cards"></a>
